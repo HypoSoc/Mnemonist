@@ -1,0 +1,16 @@
+using BaseLib.Patches.Content;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Models;
+
+namespace Mnemonist.MnemonistCode.Cards;
+
+public static class MnemonistKeywords
+{
+    [CustomEnum, KeywordProperties(AutoKeywordPosition.After)]
+    public static CardKeyword Persistent;
+    
+    public static bool IsPersistent(this CardModel card)
+    {
+        return card.Keywords.Contains(Persistent);
+    }
+}

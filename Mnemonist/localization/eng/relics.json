@@ -1,0 +1,9 @@
+{
+  "MNEMONIST-IDYLLIC_MEMORIES.description": "At the start of each combat gain [blue]{Memory:diff()}[/blue] [gold]Memories[/gold].",
+  "MNEMONIST-IDYLLIC_MEMORIES.flavor": "The time before the Spire exists only in fragments, but it is comforting all the same.",
+  "MNEMONIST-IDYLLIC_MEMORIES.title": "Idyllic Memories",
+  "MNEMONIST-TUMULTUOUS_PRESENT.description": "At the start of your first {Turns} turns, gain [blue]{Memory:diff()}[/blue] [gold]Memories[/gold].",
+  "MNEMONIST-TUMULTUOUS_PRESENT.flavor": "These endless torments are fuel, if nothing else.",
+  "MNEMONIST-TUMULTUOUS_PRESENT.title": "Tumultuous Present"
+
+}

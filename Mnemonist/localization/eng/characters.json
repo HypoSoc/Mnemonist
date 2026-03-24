@@ -1,0 +1,16 @@
+{
+  "MNEMONIST-MNEMONIST.titleObject": "The Mnemonist",
+  "MNEMONIST-MNEMONIST.description": "A lost psychic in search of purpose.\nHe wields his few remaining memories as sword and shield both.",
+  "MNEMONIST-MNEMONIST.pronounObject": "him",
+  "MNEMONIST-MNEMONIST.banter.dead.endTurnPing": "...",
+  "MNEMONIST-MNEMONIST.banter.alive.endTurnPing": "I didn't remember you being so slow...",
+  "MNEMONIST-MNEMONIST.possessiveAdjective": "his",
+  "MNEMONIST-MNEMONIST.pronounSubject": "he",
+  "MNEMONIST-MNEMONIST.pronounPossessive": "his",
+  "MNEMONIST-MNEMONIST.cardsModifierTitle": "__ Cards",
+  "MNEMONIST-MNEMONIST.eventDeathPrevention": "Co-op survival line",
+  "MNEMONIST-MNEMONIST.aromaPrinciple": "Lore",
+  "MNEMONIST-MNEMONIST.cardsModifierDescription": "__ cards will now appear in rewards and shops.",
+  "MNEMONIST-MNEMONIST.goldMonologue": "A grand memory in the making...",
+  "MNEMONIST-MNEMONIST.title": "The Mnemonist"
+}
