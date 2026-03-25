@@ -2,17 +2,16 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Mnemonist.MnemonistCode.Cards.Common;
 
-public class BreadthOfExperience() : MnemonistCard(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public class Frustration() : MnemonistCard(2, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(12m, ValueProp.Move), new IntVar("Size", 20m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8m, ValueProp.Move), new IntVar("Size", 10m)];
 
-    private bool _isDiscounted = false;
+    private int _discountAmount = 0;
 
     private Task SetDiscount()
     {
@@ -22,21 +21,13 @@ public class BreadthOfExperience() : MnemonistCard(2, CardType.Attack, CardRarit
             return Task.CompletedTask;
         try
         {
-            if (_isDiscounted)
+            var discountAmount = PileType.Exhaust.GetPile(Owner).Cards.Count / DynamicVars["Size"].IntValue;
+            discountAmount = Math.Min(2, discountAmount);
+            if (discountAmount != this._discountAmount)
             {
-                if (PileType.Draw.GetPile(Owner).Cards.Count < DynamicVars["Size"].IntValue)
-                {
-                    _isDiscounted = false;
-                    EnergyCost.AddThisCombat(1);
-                }
-            }
-            else
-            {
-                if (PileType.Draw.GetPile(Owner).Cards.Count >= DynamicVars["Size"].IntValue)
-                {
-                    _isDiscounted = true;
-                    EnergyCost.AddThisCombat(-1, reduceOnly: true);
-                }
+                EnergyCost.AddThisCombat(this._discountAmount);
+                EnergyCost.AddThisCombat(-1*discountAmount);
+                this._discountAmount = discountAmount;
             }
         }
         catch (InvalidOperationException)
@@ -62,14 +53,14 @@ public class BreadthOfExperience() : MnemonistCard(2, CardType.Attack, CardRarit
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+        ArgumentNullException.ThrowIfNull(CombatState);
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState)
             .WithHitFx("vfx/vfx_big_slash")
             .Execute(choiceContext);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(4m);
+        DynamicVars.Damage.UpgradeValueBy(2m);
     }
 }
