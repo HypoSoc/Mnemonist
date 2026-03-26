@@ -21,7 +21,7 @@ public class ActiveRecall() : MnemonistCard(0,
     {
         CardSelectorPrefs prefs = new CardSelectorPrefs(SelectionScreenPrompt, 1);
         CardModel? card = (await CardSelectCmd.FromSimpleGrid(choiceContext, 
-            PileType.Discard.GetPile(Owner).Cards, 
+            PileType.Discard.GetPile(Owner).Cards.Where(c => c is not Engram).ToList(), 
             Owner, prefs)).FirstOrDefault<CardModel>();
         if (card == null)
             return;
