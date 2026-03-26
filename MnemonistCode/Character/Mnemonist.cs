@@ -5,7 +5,6 @@ using MegaCrit.Sts2.Core.Animation;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Cards;
 using Mnemonist.MnemonistCode.Cards.Basic;
 using Mnemonist.MnemonistCode.Relics;
 
@@ -17,8 +16,8 @@ public class Mnemonist : PlaceholderCharacterModel
 
     public static readonly Color Color = new("ffffff");
     
-    public override CustomEnergyCounter? CustomEnergyCounter =>
-        new CustomEnergyCounter((i) => "res://Mnemonist/images/charui/mnemonist_energy_icon.png", new Color(0.4f, 0.1f, 0.9f), new Color(0.7f, 0.1f, 0.9f));
+    // public override CustomEnergyCounter? CustomEnergyCounter =>
+    //     new CustomEnergyCounter((i) => "res://Mnemonist/images/charui/mnemonist_energy_icon.png", new Color(0.4f, 0.1f, 0.9f), new Color(0.7f, 0.1f, 0.9f));
     
     public override string CustomVisualPath => "res://Mnemonist/scenes/combat/creature_visuals/mnemonist.tscn";
 
