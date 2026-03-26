@@ -16,8 +16,6 @@ public partial class MainFile : Node
 
     public static void Initialize()
     {
-        var assembly = Assembly.GetExecutingAssembly();
-        ScriptManagerBridge.LookupScriptsInAssembly(assembly);
         Harmony harmony = new(ModId);
         harmony.PatchAll();
     }

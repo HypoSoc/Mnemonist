@@ -5,6 +5,9 @@
   "MNEMONIST-COGNITIVE_IGNITION_POWER.description": "Whenever an [blue]Engram[/blue] is [gold]Exhausted[/gold], deal 3 damage to a random enemy.",
   "MNEMONIST-COGNITIVE_IGNITION_POWER.smartDescription": "Whenever an [blue]Engram[/blue] is [gold]Exhausted[/gold], deal {Amount} damage to a random enemy.",
   "MNEMONIST-COGNITIVE_IGNITION_POWER.title": "Cognitive Ignition",
+  "MNEMONIST-FORGOTTEN_FRUSTRATION_POWER.description": "When you [gold]Exhaust[/gold] a non-[gold]Status[/gold] card during your turn, gain 1 [gold]Strength[/gold] for the turn.",
+  "MNEMONIST-FORGOTTEN_FRUSTRATION_POWER.smartDescription": "When you [gold]Exhaust[/gold] a non-[gold]Status[/gold] card during your turn, gain {Amount} [gold]Strength[/gold] for the turn.",
+  "MNEMONIST-FORGOTTEN_FRUSTRATION_POWER.title": "Forgotten Frustration",
   "MNEMONIST-HELPFUL_MNEMONICS_POWER.description": "Whenever you draw an [blue]Engram[/blue] gain 3 [gold]Block[/gold]",
   "MNEMONIST-HELPFUL_MNEMONICS_POWER.smartDescription": "Whenever you draw an [blue]Engram[/blue] gain {Amount} [gold]Block[/gold]",
   "MNEMONIST-HELPFUL_MNEMONICS_POWER.title": "Helpful Mnemonics",
@@ -28,5 +31,8 @@
   "MNEMONIST-RECURSIVE_MEMORY_POWER.title": "Recursive Memory",
   "MNEMONIST-SIMPLE_MNEMONICS_POWER.description": "At the start of your turn, gain [blue]2[/blue] [blue]Memory[/blue].",
   "MNEMONIST-SIMPLE_MNEMONICS_POWER.smartDescription": "At the start of your turn, gain [blue]{Amount}[/blue] [blue]Memory[/blue].",
-  "MNEMONIST-SIMPLE_MNEMONICS_POWER.title": "Simple Mnemonics"
+  "MNEMONIST-SIMPLE_MNEMONICS_POWER.title": "Simple Mnemonics",
+  "MNEMONIST-TRAIN_OF_THOUGHT_POWER.description": "This turn, when you [gold]Exhaust[/gold] a non-[gold]Status[/gold], draw a card.",
+  "MNEMONIST-TRAIN_OF_THOUGHT_POWER.smartDescription": "This turn, when you [gold]Exhaust[/gold] a non-[gold]Status[/gold], draw {Amount} {Amount:plural:card|cards}.",
+  "MNEMONIST-TRAIN_OF_THOUGHT_POWER.title": "Train Of Thought"
 }
