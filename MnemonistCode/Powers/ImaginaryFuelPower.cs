@@ -20,9 +20,9 @@ public class ImaginaryFuelPower : MnemonistPower
             return;
         for (int i = 0; i < Amount; ++i)
         {
-            if (Owner.GetPowerAmount<Memory>() >= 2)
+            if (Owner.GetPowerAmount<Memory>() >= 3)
             {
-                await PowerCmd.Apply<Memory>(Owner, -2, this.Owner, null);
+                await PowerCmd.Apply<Memory>(Owner, -3, this.Owner, null);
                 await PowerCmd.Apply<EnergyNextTurnPower>(Owner, 1, Owner, null);
             }
         }
