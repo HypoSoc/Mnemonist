@@ -5,14 +5,11 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using Mnemonist.MnemonistCode.Extensions;
-using Mnemonist.MnemonistCode.Powers;
 
-namespace Mnemonist.MnemonistCode.Cards.Humor;
+namespace Mnemonist.MnemonistCode.Cards.Humors;
 
 [Pool(typeof(TokenCardPool))]
 public abstract class Humor(CardType type, TargetType target) : CustomCardModel(0, type, CardRarity.Token, target)
@@ -38,23 +35,29 @@ public abstract class Humor(CardType type, TargetType target) : CustomCardModel(
     private static readonly List<Humor> CanonicalHumors =
         [ModelDb.Card<Choleric>(), ModelDb.Card<Melancholic>(), ModelDb.Card<Phlegmatic>(), ModelDb.Card<Sanguine>()];
     
-    public static IEnumerable<CardModel> CreateRandom(Player owner, int amount, CombatState combatState)
+    public static IEnumerable<CardModel> CreateRandom(Player owner, int amount, CombatState combatState, bool isUpgraded = false)
     {
         List<CardModel> humorList = new List<CardModel>();
         for (var index = 0; index < amount; ++index)
         {
             var choice = owner.RunState.Rng.CombatCardSelection.NextInt(4);
-            humorList.Add(combatState.CreateCard(CanonicalHumors[choice], owner));
+            var card = combatState.CreateCard(CanonicalHumors[choice], owner);
+            if (isUpgraded)
+                CardCmd.Upgrade(card);
+            humorList.Add(card);
         }
         return humorList;
     }
     
-    public static IEnumerable<Humor> Create<T>(Player owner, int amount, CombatState combatState) where T : Humor
+    public static IEnumerable<Humor> Create<T>(Player owner, int amount, CombatState combatState, bool isUpgraded = false) where T : Humor
     {
         List<Humor> humorList = new List<Humor>();
         for (var index = 0; index < amount; ++index)
         {
-            humorList.Add(combatState.CreateCard<T>(owner));
+            var card = combatState.CreateCard<T>(owner);
+            if (isUpgraded)
+                CardCmd.Upgrade(card);
+            humorList.Add(card);
         }
         return humorList;
     }

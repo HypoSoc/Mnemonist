@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using Mnemonist.MnemonistCode.Powers;
 
-namespace Mnemonist.MnemonistCode.Cards.Humor;
+namespace Mnemonist.MnemonistCode.Cards.Humors;
 
 public class Sanguine() : Humor(CardType.Skill, TargetType.Self)
 {

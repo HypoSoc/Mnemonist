@@ -9,6 +9,9 @@ public static class MnemonistKeywords
     [CustomEnum, KeywordProperties(AutoKeywordPosition.After)]
     public static CardKeyword Persistent;
     
+    [CustomEnum, KeywordProperties(AutoKeywordPosition.None)]
+    public static CardKeyword CreatesHumors;
+    
     public static bool IsPersistent(this CardModel card)
     {
         return card.Keywords.Contains(Persistent);

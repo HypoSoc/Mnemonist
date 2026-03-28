@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Mnemonist.MnemonistCode.Cards.Humor;
+namespace Mnemonist.MnemonistCode.Cards.Humors;
 
 public class Phlegmatic() : Humor(CardType.Skill, TargetType.Self)
 {

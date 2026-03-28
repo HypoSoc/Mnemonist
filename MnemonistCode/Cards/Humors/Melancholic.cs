@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
-namespace Mnemonist.MnemonistCode.Cards.Humor;
+namespace Mnemonist.MnemonistCode.Cards.Humors;
 
 public class Melancholic() : Humor(CardType.Skill, TargetType.Self)
 {
