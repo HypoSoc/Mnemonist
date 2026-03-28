@@ -8,7 +8,7 @@ namespace Mnemonist.MnemonistCode.Cards.Uncommon;
 
 public class DogmaticIdeal() : MnemonistCard(3, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10m, ValueProp.Move), new EnergyVar(1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(11m, ValueProp.Move), new EnergyVar(1)];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -36,6 +36,6 @@ public class DogmaticIdeal() : MnemonistCard(3, CardType.Attack, CardRarity.Unco
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3);
+        AddKeyword(CardKeyword.Retain);
     }
 }
