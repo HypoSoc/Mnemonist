@@ -31,7 +31,7 @@ public class WeightOfMemory() : MnemonistCard(1, CardType.Attack, CardRarity.Rar
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new CalculationBaseVar(0M),
         new ExtraDamageVar(2M),
-        new CalculatedDamageVar(ValueProp.Move).WithMultiplier( (card, _) => card.CombatState != null ? card.Owner.Creature.GetPowerAmount<Memory>() : 0),
+        new CalculatedDamageVar(ValueProp.Move).WithMultiplier( (card, _) => card.CombatState != null ? card.Owner.Creature.GetPowerAmount<Memory>() + card.DynamicVars["Memory"].IntValue : 0),
         new IntVar("Memory", 1M),
         new IntVar("Increase", 2M)
     ];
@@ -56,9 +56,9 @@ public class WeightOfMemory() : MnemonistCard(1, CardType.Attack, CardRarity.Rar
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await PowerCmd.Apply<Memory>(this.Owner.Creature, DynamicVars["Memory"].IntValue, this.Owner.Creature, (CardModel) this, false);
         bool shouldTriggerFatal = cardPlay.Target.Powers.All(p => p.ShouldOwnerDeathTriggerFatal());
         AttackCommand attackCommand = await DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this).Targeting(cardPlay.Target).WithHitFx("vfx/vfx_big_slash", tmpSfx: "blunt_attack.mp3").Execute(choiceContext);
+        await PowerCmd.Apply<Memory>(this.Owner.Creature, DynamicVars["Memory"].IntValue, this.Owner.Creature, (CardModel) this, false);
         if (!shouldTriggerFatal || !attackCommand.Results.Any( (r => r.WasTargetKilled)))
             return;
         int intValue = DynamicVars["Increase"].IntValue;

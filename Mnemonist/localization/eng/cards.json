@@ -18,11 +18,11 @@
   "MNEMONIST-BURNING_THOUGHTS.title": "Burning Thoughts",
   "MNEMONIST-COGNITIVE_IGNITION.description": "Whenever an [blue]Engram[/blue] is [gold]Exhausted[/gold], deal [blue]{CognitiveIgnitionPower:diff()}[/blue] damage to a random enemy.",
   "MNEMONIST-COGNITIVE_IGNITION.title": "Cognitive Ignition",
-  "MNEMONIST-COMFORTING_THOUGHT.description": "{IfUpgraded:show: Gain {Memory:diff()} [gold]Memory[/gold].\n|}Gain [gold]Block[/gold] equal to your [gold]Memory[/gold].{InCombat:\n(Gain {CalculatedBlock:diff()} [gold]Block[/gold])|}",
+  "MNEMONIST-COMFORTING_THOUGHT.description": "{IfUpgraded:show: Gain {Memory:diff()} [gold]Memory[/gold].\n|}Gain [gold]Block[/gold] equal to your [gold]Memory[/gold].{InCombat:\n(Gains {CalculatedBlock:diff()} [gold]Block[/gold])|}",
   "MNEMONIST-COMFORTING_THOUGHT.title": "Comforting Thought",
   "MNEMONIST-COMMITMENT.description": "Deal {Damage:diff()} damage to ALL enemies.\n[gold]Exhaust[/gold] your [gold]Draw Pile[/gold].",
   "MNEMONIST-COMMITMENT.title": "Commitment",
-  "MNEMONIST-CONTEMPLATE.description": "Shuffle {Engrams:diff()} [blue]Engrams[/blue] into your [gold]Draw Pile[/gold]. Gain [gold]Block[/gold] equal to the number of [blue]Engrams[/blue] in your [gold]Draw Pile[/gold].{InCombat:\n(Gain {CalculatedBlock:diff()} [gold]Block[/gold])|}",
+  "MNEMONIST-CONTEMPLATE.description": "Shuffle {Engrams:diff()} [blue]Engrams[/blue] into your [gold]Draw Pile[/gold]. Gain [gold]Block[/gold] equal to the number of [blue]Engrams[/blue] in your [gold]Draw Pile[/gold].{InCombat:\n(Gains {CalculatedBlock:diff()} [gold]Block[/gold])|}",
   "MNEMONIST-CONTEMPLATE.title": "Contemplate",
   "MNEMONIST-CRAM_SHEET.description": "Deal {CalculatedDamage:diff()} damage.\nDeals additional damage equal to your [gold]Memory[/gold].",
   "MNEMONIST-CRAM_SHEET.title": "Cram Sheet",
@@ -123,6 +123,6 @@
   "MNEMONIST-VENT.title": "Vent",
   "MNEMONIST-WAVERING_FOCUS.description": "Gain {CalculatedBlock:diff()} [gold]Block[/gold].\nGains 1 less [gold]Block[/gold] for every card in your [gold]Draw Pile[/gold] and [gold]Discard Pile[/gold].",
   "MNEMONIST-WAVERING_FOCUS.title": "Wavering Focus",
-  "MNEMONIST-WEIGHT_OF_MEMORY.description": "Gain {Memory:diff()} [gold]Memory[/gold].\nDeal damage equal to twice your [gold]Memory[/gold]. If [gold]Fatal[/gold], permanently increase this card's [gold]Memory[/gold] by {Increase:diff()}.",
+  "MNEMONIST-WEIGHT_OF_MEMORY.description": "Gain {Memory:diff()} [gold]Memory[/gold].\nDeal damage equal to twice your [gold]Memory[/gold]. If [gold]Fatal[/gold], permanently increase this card's [gold]Memory[/gold] by {Increase:diff()}.{InCombat:\n(Deals {CalculatedDamage:diff()} damage.)|}",
   "MNEMONIST-WEIGHT_OF_MEMORY.title": "Weight Of Memory"
 }
