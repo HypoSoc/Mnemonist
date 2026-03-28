@@ -79,7 +79,7 @@
   "MNEMONIST-MIND_PALACE.title": "Mind Palace",
   "MNEMONIST-MINDLESS_MASTERY.description": "As long as your [gold]Draw Pile[/gold] is empty, cards you play are free.",
   "MNEMONIST-MINDLESS_MASTERY.title": "Mindless Mastery",
-  "MNEMONIST-MISREMEMBER.description": "Deal {Damage:diff} damage.\nIf this card is [gold]Exhausted[/gold] during your turn, gain {Block:diff()} [gold]Block[/gold].",
+  "MNEMONIST-MISREMEMBER.description": "Deal {Damage:diff()} damage.\nIf this card is [gold]Exhausted[/gold] during your turn, gain {Block:diff()} [gold]Block[/gold].",
   "MNEMONIST-MISREMEMBER.title": "Misremember",
   "MNEMONIST-MNEMONIC_FORM.description": "{IfUpgraded:show:Gain 5 [blue]Memory[/blue]\n|}At the end of your turn, deal damage to ALL enemies equal to your [blue]Memory[/blue].\n[blue]Memory Engrams[/blue] are shuffled into your [gold]Draw Pile[/gold].",
   "MNEMONIST-MNEMONIC_FORM.title": "Mnemonic Form",

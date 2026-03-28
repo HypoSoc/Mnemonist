@@ -11,6 +11,7 @@ public class StrivePower: MnemonistPower
 {
     private bool _initialCard = true;
     private bool _preventPlay = false;
+    public override bool AllowNegative => true;
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType
     {
@@ -39,10 +40,10 @@ public class StrivePower: MnemonistPower
         if (Amount == 1)
         {
             _preventPlay = true;
-            this.Amount = 0;
+            await PowerCmd.ModifyAmount(this, -2M, null, null, silent:true);
             return;
         }
-        await PowerCmd.Decrement(this);
+        await PowerCmd.ModifyAmount(this, -1M, null, null, silent:true);
     }
 
     
