@@ -1,6 +1,6 @@
 {
-  "MNEMONIST-CREATES_HUMORS.description": "0 Cost Cards with an effect that [gold]Exhaust[/gold].",
-  "MNEMONIST-CREATES_HUMORS.title": "Humor",
+  "MNEMONIST-CREATESHUMORS.description": "0 Cost Cards with a positive effect that [gold]Exhaust[/gold].",
+  "MNEMONIST-CREATESHUMORS.title": "Humor",
   "MNEMONIST-PERSISTENT.title": "Persistent",
   "MNEMONIST-PERSISTENT.description": "When this card is Exhausted, it is shuffled into your Draw Pile."
 }

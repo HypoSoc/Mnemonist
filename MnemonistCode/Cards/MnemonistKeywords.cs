@@ -10,7 +10,7 @@ public static class MnemonistKeywords
     public static CardKeyword Persistent;
     
     [CustomEnum, KeywordProperties(AutoKeywordPosition.None)]
-    public static CardKeyword CreatesHumors;
+    public static CardKeyword Createshumors;
     
     public static bool IsPersistent(this CardModel card)
     {
