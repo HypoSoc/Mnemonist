@@ -10,11 +10,10 @@ namespace Mnemonist.MnemonistCode.Cards.Rare;
 
 public class Commitment() : MnemonistCard(1, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(12m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(12m, ValueProp.Move), new CardsVar(3)];
     public override HashSet<CardKeyword> CanonicalKeywords =>
     [
         CardKeyword.Innate,
-        CardKeyword.Eternal,
         CardKeyword.Exhaust,
     ];
 
@@ -22,6 +21,7 @@ public class Commitment() : MnemonistCard(1, CardType.Attack, CardRarity.Rare, T
     {
         if (CombatState is null)
             return;
+        await CardPileCmd.Draw(choiceContext, DynamicVars["Cards"].IntValue, this.Owner);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
