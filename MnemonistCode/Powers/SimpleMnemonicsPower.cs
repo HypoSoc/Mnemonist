@@ -22,6 +22,5 @@ public class SimpleMnemonicsPower : MnemonistPower
         if (player != Owner.Player)
             return;
         await PowerCmd.Apply<Memory>(Owner, Amount, Owner, null, true);
-
     }
 }
