@@ -3,22 +3,22 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
-using Mnemonist.MnemonistCode.Cards;
+using MegaCrit.Sts2.Core.Models.Powers;
 using Mnemonist.MnemonistCode.Cards.Humors;
 
 namespace Mnemonist.MnemonistCode.Powers;
 
-public class FriendGroupPower : MnemonistPower
+public class ExuberancePower : MnemonistPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
     
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromKeyword(MnemonistKeywords.Createshumors), HoverTipFactory.FromPower<Memory>()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<Sanguine>(), HoverTipFactory.FromPower<StrengthPower>()];
     
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner.Creature != Owner || cardPlay.Card is not Humor)
+        if (cardPlay.Card.Owner.Creature != Owner || cardPlay.Card is not Sanguine)
             return;
-        await PowerCmd.Apply<Memory>(Owner, Amount, Owner, null);
+        await PowerCmd.Apply<StrengthPower>(Owner, Amount, Owner, null);
     }
 }
