@@ -2,6 +2,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using Mnemonist.MnemonistCode.Cards;
@@ -13,13 +14,14 @@ public class PsychotherapyPower : MnemonistPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-
-    private bool _choleric = false;
-    private bool _melancholic = false;
-    private bool _phlegmatic = false;
-    private bool _sanguine = false;
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromKeyword(MnemonistKeywords.Createshumors)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [
+        new BoolVar("Choleric", false),
+        new BoolVar("Melancholic", false),
+        new BoolVar("Phlegmatic", false),
+        new BoolVar("Sanguine", false),
+    ];
     
     public override async Task AfterCardExhausted(
         PlayerChoiceContext choiceContext,
@@ -28,20 +30,23 @@ public class PsychotherapyPower : MnemonistPower
     {
         if (card.Owner.Creature != Owner || card is not Humor)
             return;
-        if (card is Choleric)
-            _choleric = true;
-        if (card is Melancholic)
-            _melancholic = true;
-        if (card is Phlegmatic)
-            _phlegmatic = true;
-        if (card is Sanguine)
-            _sanguine = true;
-        if (_choleric && _melancholic && _phlegmatic && _sanguine)
+        if (card is Choleric && DynamicVars["Choleric"].IntValue == 0)
+            DynamicVars["Choleric"].BaseValue = 1;
+        if (card is Melancholic && DynamicVars["Melancholic"].IntValue == 0)
+            DynamicVars["Melancholic"].BaseValue = 1;
+        if (card is Phlegmatic && DynamicVars["Phlegmatic"].IntValue == 0)
+            DynamicVars["Phlegmatic"].BaseValue = 1;
+        if (card is Sanguine && DynamicVars["Sanguine"].IntValue == 0)
+            DynamicVars["Sanguine"].BaseValue = 1;
+        if (DynamicVars["Choleric"].IntValue == 1 &&
+            DynamicVars["Melancholic"].IntValue == 1 &&
+            DynamicVars["Phlegmatic"].IntValue == 1 &&
+            DynamicVars["Sanguine"].IntValue == 1)
         {
-            _choleric = false;
-            _melancholic = false;
-            _phlegmatic = false;
-            _sanguine = false;
+            DynamicVars["Choleric"].BaseValue = 0;
+            DynamicVars["Melancholic"].BaseValue = 0;
+            DynamicVars["Phlegmatic"].BaseValue = 0;
+            DynamicVars["Sanguine"].BaseValue = 0;
             Flash();
             await CreatureCmd.Damage(choiceContext, CombatState.HittableEnemies, Amount, ValueProp.Unpowered, Owner, null);
         }
