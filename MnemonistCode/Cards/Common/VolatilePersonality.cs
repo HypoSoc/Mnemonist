@@ -11,6 +11,13 @@ public class VolatilePersonality() : MnemonistCard(0, CardType.Skill, CardRarity
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new IntVar("Humors", 2m)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromKeyword(MnemonistKeywords.Createshumors)];
+    
+    public override HashSet<CardKeyword> CanonicalKeywords =>
+    [
+        MnemonistKeywords.Psych,
+        MnemonistKeywords.Createshumors,
+    ];
+
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -18,5 +25,10 @@ public class VolatilePersonality() : MnemonistCard(0, CardType.Skill, CardRarity
             return;
         CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, DynamicVars["Humors"].IntValue, CombatState, IsUpgraded), PileType.Draw, true, CardPilePosition.Random), 0.2f);
         await CardPileCmd.Draw(choiceContext, 1, Owner);
+    }
+    
+    protected override void OnUpgrade() {
+        this.AddKeyword(MnemonistKeywords.Psychplus);
+        this.RemoveKeyword(MnemonistKeywords.Psych);
     }
 }

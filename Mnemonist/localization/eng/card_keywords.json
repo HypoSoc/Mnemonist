@@ -2,5 +2,9 @@
   "MNEMONIST-CREATESHUMORS.description": "0 Cost Cards with a positive effect that [gold]Exhaust[/gold].",
   "MNEMONIST-CREATESHUMORS.title": "Humor",
   "MNEMONIST-PERSISTENT.title": "Persistent",
-  "MNEMONIST-PERSISTENT.description": "When this card is Exhausted, it is shuffled into your Draw Pile."
+  "MNEMONIST-PERSISTENT.description": "When this card is Exhausted, it is shuffled into your Draw Pile.",
+  "MNEMONIST-PSYCH.description": "Shuffle X random [gold]Humors[/gold] into your [gold]Draw Pile[/gold].",
+  "MNEMONIST-PSYCH.title": "Psych X",
+  "MNEMONIST-PSYCHPLUS.description": "Shuffle X random upgraded [gold]Humors[/gold] into your [gold]Draw Pile[/gold].",
+  "MNEMONIST-PSYCHPLUS.title": "Psych+ X"
 }

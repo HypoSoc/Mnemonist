@@ -10,6 +10,10 @@ namespace Mnemonist.MnemonistCode.Cards.Rare;
 public class FocusedGrudge() : MnemonistCard(0, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<FocusedGrudgePower>(10), new IntVar("Size", 3)];
+    public override HashSet<CardKeyword> CanonicalKeywords =>
+    [
+        MnemonistKeywords.Persistent,
+    ];
     
     private int _penaltyAmount = 0;
 
@@ -53,8 +57,10 @@ public class FocusedGrudge() : MnemonistCard(0, CardType.Power, CardRarity.Rare,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        CardModel clone = CreateClone();
+        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(clone, PileType.Draw, true, CardPilePosition.Random), 0.5f);
         await PowerCmd.Apply<FocusedGrudgePower>(Owner.Creature, DynamicVars["FocusedGrudgePower"].IntValue, Owner.Creature, this);
     }
     
-    protected override void OnUpgrade() => this.AddKeyword(MnemonistKeywords.Persistent);
+    protected override void OnUpgrade() => DynamicVars["FocusedGrudgePower"].UpgradeValueBy(5);
 }

@@ -12,6 +12,12 @@ public static class MnemonistKeywords
     [CustomEnum, KeywordProperties(AutoKeywordPosition.None)]
     public static CardKeyword Createshumors;
     
+    [CustomEnum, KeywordProperties(AutoKeywordPosition.None)]
+    public static CardKeyword Psych;
+    
+    [CustomEnum, KeywordProperties(AutoKeywordPosition.None)]
+    public static CardKeyword Psychplus;
+    
     public static bool IsPersistent(this CardModel card)
     {
         return card.Keywords.Contains(Persistent);
