@@ -27,10 +27,12 @@ public class Oblivious() : MnemonistCard(1, CardType.Skill, CardRarity.Rare, Tar
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.CalculatedBlock.Calculate(cardPlay.Target), DynamicVars.CalculatedBlock.Props, cardPlay);
         var energyGain = Owner.Creature.GetPowerAmount<Memory>() / DynamicVars["PerEnergy"].IntValue;
-        if (energyGain > 0)
-            await PlayerCmd.GainEnergy(energyGain, Owner);
         await PowerCmd.Remove<Memory>(Owner.Creature);
-
+        if (energyGain > 0)
+        {
+            await PlayerCmd.GainEnergy(energyGain, Owner);
+            await CardPileCmd.Draw(choiceContext, energyGain, this.Owner); 
+        }
     }
 
     protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
