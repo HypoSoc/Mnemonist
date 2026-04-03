@@ -67,5 +67,8 @@
   "MNEMONIST-STRIVE_POWER.title": "Strive To Remember",
   "MNEMONIST-TRAIN_OF_THOUGHT_POWER.description": "This turn, when you [gold]Exhaust[/gold] a non-[gold]Status[/gold], draw a card.",
   "MNEMONIST-TRAIN_OF_THOUGHT_POWER.smartDescription": "This turn, when you [gold]Exhaust[/gold] a non-[gold]Status[/gold], draw {Amount} {Amount:plural:card|cards}.",
-  "MNEMONIST-TRAIN_OF_THOUGHT_POWER.title": "Train Of Thought"
+  "MNEMONIST-TRAIN_OF_THOUGHT_POWER.title": "Train Of Thought",
+  "MNEMONIST-YELLOW_BILE_POWER.description": "All [gold]Humors[/gold] you generate are [gold]Choleric[/gold].\n[gold]Cholerics[/gold] deal 4 more damage.",
+  "MNEMONIST-YELLOW_BILE_POWER.smartDescription": "All [gold]Humors[/gold] you generate are [gold]Choleric[/gold].\n[gold]Cholerics[/gold] deal {Amount} more damage.",
+  "MNEMONIST-YELLOW_BILE_POWER.title": "Yellow Bile"
 }

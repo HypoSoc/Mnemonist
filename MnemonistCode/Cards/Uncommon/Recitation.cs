@@ -1,7 +1,5 @@
-using Godot;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -21,8 +19,9 @@ public class Recitation() : MnemonistCard(0, CardType.Attack, CardRarity.Uncommo
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
+        ArgumentNullException.ThrowIfNull(CombatState);
         var xValue = ResolveEnergyXValue();
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(xValue).FromCard(this).Targeting(cardPlay.Target).WithHitVfxNode((Func<Creature, Node2D>) (t => (Node2D) NStabVfx.Create(t, true, VfxColor.Gold))).Execute(choiceContext);
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(xValue).FromCard(this).Targeting(cardPlay.Target).WithHitVfxNode((t => NStabVfx.Create(t, true, VfxColor.Gold))).Execute(choiceContext);
         if (xValue > 0)
         {
             await PowerCmd.Apply<Memory>(Owner.Creature, DynamicVars["Memory"].IntValue * xValue, Owner.Creature, this);

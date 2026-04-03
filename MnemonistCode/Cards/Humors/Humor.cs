@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using Mnemonist.MnemonistCode.Extensions;
+using Mnemonist.MnemonistCode.Powers;
 
 namespace Mnemonist.MnemonistCode.Cards.Humors;
 
@@ -37,11 +38,25 @@ public abstract class Humor(CardType type, TargetType target) : CustomCardModel(
     
     public static IEnumerable<CardModel> CreateRandom(Player owner, int amount, CombatState combatState, bool isUpgraded = false)
     {
+        bool didFlash = false;
         List<CardModel> humorList = new List<CardModel>();
         for (var index = 0; index < amount; ++index)
         {
-            var choice = owner.RunState.Rng.CombatCardSelection.NextInt(4);
-            var card = combatState.CreateCard(CanonicalHumors[choice], owner);
+            CardModel card;
+            if (owner.Creature.HasPower<YellowBilePower>())
+            {
+                card = combatState.CreateCard<Choleric>(owner);
+                if (!didFlash)
+                {
+                    didFlash = true;
+                    owner.Creature.GetPower<YellowBilePower>().FlashPublic();
+                }
+            }
+            else
+            {
+                var choice = owner.RunState.Rng.CombatCardSelection.NextInt(4);
+                card = combatState.CreateCard(CanonicalHumors[choice], owner);
+            }
             if (isUpgraded)
                 CardCmd.Upgrade(card);
             humorList.Add(card);
@@ -51,10 +66,24 @@ public abstract class Humor(CardType type, TargetType target) : CustomCardModel(
     
     public static IEnumerable<Humor> Create<T>(Player owner, int amount, CombatState combatState, bool isUpgraded = false) where T : Humor
     {
+        bool didFlash = false;
         List<Humor> humorList = new List<Humor>();
         for (var index = 0; index < amount; ++index)
         {
-            var card = combatState.CreateCard<T>(owner);
+            Humor card;
+            if (owner.Creature.HasPower<YellowBilePower>())
+            {
+                card = combatState.CreateCard<Choleric>(owner);
+                if (!didFlash)
+                {
+                    didFlash = true;
+                    owner.Creature.GetPower<YellowBilePower>().FlashPublic();
+                }
+            }
+            else
+            {
+                card = combatState.CreateCard<T>(owner);
+            }
             if (isUpgraded)
                 CardCmd.Upgrade(card);
             humorList.Add(card);

@@ -7,19 +7,19 @@ using Mnemonist.MnemonistCode.Powers;
 
 namespace Mnemonist.MnemonistCode.Cards.Uncommon;
 
-public class QuickToRecall() : MnemonistCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+public class NoteToSelf() : MnemonistCard(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new CalculationBaseVar(0M),
-        new CalculationExtraVar(1M),
-        new CalculatedVar("Memory").WithMultiplier( (card, _) => card.IsUpgraded ? PileType.Draw.GetPile(card.Owner).Cards.Count(c => c.Type == CardType.Status) + PileType.Hand.GetPile(card.Owner).Cards.Count(c => c.Type == CardType.Status) + PileType.Discard.GetPile(card.Owner).Cards.Count(c => c.Type == CardType.Status): PileType.Draw.GetPile(card.Owner).Cards.Count(c => c.Type == CardType.Status))];
+        new CalculationExtraVar(1m),
+        new CalculatedVar("Memory").WithMultiplier( (card, _) => (PileType.Draw.GetPile(card.Owner).Cards.Count(c => c.Type == CardType.Status) + PileType.Hand.GetPile(card.Owner).Cards.Count(c => c.Type == CardType.Status) + PileType.Discard.GetPile(card.Owner).Cards.Count(c => c.Type == CardType.Status))/2)];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<Memory>()];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var drawStatus = PileType.Draw.GetPile(Owner).Cards.Where(c => c.Type == CardType.Status).ToList();
-        var memoryAmount = drawStatus.Count;
+        int memoryAmount = drawStatus.Count;
         foreach (var card in drawStatus)
         {
             await CardCmd.Exhaust(choiceContext, card, skipVisuals: true);
@@ -43,8 +43,11 @@ public class QuickToRecall() : MnemonistCard(1, CardType.Skill, CardRarity.Uncom
                 PileType.Exhaust.GetPile(Owner).InvokeCardAddFinished();
             }
         }
-            
+
+        memoryAmount /= 2;
         if (memoryAmount > 0)
-            await PowerCmd.Apply<Memory>(Owner.Creature, memoryAmount, Owner.Creature, this);
+            await PowerCmd.Apply<SimpleMnemonicsPower>(Owner.Creature, memoryAmount, Owner.Creature, this);
     }
+    
+    protected override void OnUpgrade() => AddKeyword(CardKeyword.Retain);
 }
