@@ -9,6 +9,8 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Saves;
+using MegaCrit.Sts2.Core.Settings;
 using Mnemonist.MnemonistCode.Extensions;
 using Mnemonist.MnemonistCode.Powers;
 
@@ -38,18 +40,35 @@ public class Engram() : CustomCardModel(-1, CardType.Status, CardRarity.Status, 
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<Memory>()];
+
+    private static int engramsDrawnInARow = 0;
     
     public override async Task AfterCardDrawn(
         PlayerChoiceContext choiceContext,
         CardModel card,
         bool fromHandDraw)
     {
+        if (card is not Engram)
+        {
+            engramsDrawnInARow = 0;
+            return;
+        }
         if (card != this)
             return;
+        
+        engramsDrawnInARow++;
+        var originalMode = SaveManager.Instance.PrefsSave.FastMode;
+        
+        if (engramsDrawnInARow > 3)
+        {
+            SaveManager.Instance.PrefsSave.FastMode = FastModeType.Instant;
+        }
 
         await CardCmd.Exhaust(choiceContext, this);
         await PowerCmd.Apply<Memory>(this.Owner.Creature, 1, this.Owner.Creature, (CardModel) this, true);
         await CardPileCmd.Draw(choiceContext, 1, this.Owner);
+        
+        SaveManager.Instance.PrefsSave.FastMode = originalMode;
     }
     
     public static IEnumerable<Engram> Create(Player owner, int amount, CombatState combatState)

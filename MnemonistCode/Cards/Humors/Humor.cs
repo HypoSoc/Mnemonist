@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using Mnemonist.MnemonistCode.Extensions;
 using Mnemonist.MnemonistCode.Powers;
+using Mnemonist.MnemonistCode.Relics;
 
 namespace Mnemonist.MnemonistCode.Cards.Humors;
 
@@ -49,7 +50,7 @@ public abstract class Humor(CardType type, TargetType target) : CustomCardModel(
                 if (!didFlash)
                 {
                     didFlash = true;
-                    owner.Creature.GetPower<YellowBilePower>().FlashPublic();
+                    owner.Creature.GetPower<YellowBilePower>()?.FlashPublic();
                 }
             }
             else
@@ -59,6 +60,8 @@ public abstract class Humor(CardType type, TargetType target) : CustomCardModel(
             }
             if (isUpgraded)
                 CardCmd.Upgrade(card);
+            if (owner.GetRelic<AnxiousAttachment>() is not null)
+                card.AddKeyword(MnemonistKeywords.Persistent);
             humorList.Add(card);
         }
         return humorList;
@@ -77,7 +80,7 @@ public abstract class Humor(CardType type, TargetType target) : CustomCardModel(
                 if (!didFlash)
                 {
                     didFlash = true;
-                    owner.Creature.GetPower<YellowBilePower>().FlashPublic();
+                    owner.Creature.GetPower<YellowBilePower>()?.FlashPublic();
                 }
             }
             else
@@ -86,6 +89,8 @@ public abstract class Humor(CardType type, TargetType target) : CustomCardModel(
             }
             if (isUpgraded)
                 CardCmd.Upgrade(card);
+            if (owner.GetRelic<AnxiousAttachment>() is not null)
+                card.AddKeyword(MnemonistKeywords.Persistent);
             humorList.Add(card);
         }
         return humorList;

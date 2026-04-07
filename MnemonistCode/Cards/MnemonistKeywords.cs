@@ -6,7 +6,7 @@ namespace Mnemonist.MnemonistCode.Cards;
 
 public static class MnemonistKeywords
 {
-    [CustomEnum, KeywordProperties(AutoKeywordPosition.After)]
+    [CustomEnum, KeywordProperties(AutoKeywordPosition.Before)]
     public static CardKeyword Persistent;
     
     [CustomEnum, KeywordProperties(AutoKeywordPosition.None)]

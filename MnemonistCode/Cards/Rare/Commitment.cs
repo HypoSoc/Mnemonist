@@ -28,10 +28,6 @@ public class Commitment() : MnemonistCard(1, CardType.Attack, CardRarity.Rare, T
         var originalMode = SaveManager.Instance.PrefsSave.FastMode;
         if (originalMode != FastModeType.Fast && originalMode != FastModeType.Instant)
             SaveManager.Instance.PrefsSave.FastMode = FastModeType.Fast;
-        foreach (var card in PileType.Draw.GetPile(Owner).Cards.ToList())
-        {
-            await CardCmd.Exhaust(choiceContext, card);
-        }
         SaveManager.Instance.PrefsSave.FastMode = originalMode;
     }
 
