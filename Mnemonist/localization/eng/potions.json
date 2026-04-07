@@ -1,0 +1,8 @@
+{
+  "MNEMONIST-HISTORIANS_TINCTURE.description": "Return a random Attack, Skill, and Power from your [gold]Exhaust Pile[/gold] to your [gold]Hand[/gold]. They cost 0 {energyPrefix:energyIcons(1)} this turn.",
+  "MNEMONIST-HISTORIANS_TINCTURE.title": "Historian's Tincture",
+  "MNEMONIST-MEMORY_IN_A_BOTTLE.description": "Gain {Memory:diff()} [blue]Memory[/blue].",
+  "MNEMONIST-MEMORY_IN_A_BOTTLE.title": "Memory In A Bottle",
+  "MNEMONIST-SLEEVED_JOKER.description": "Add all four [gold]Upgraded[/gold] [gold]Humors[/gold] to your [gold]Hand[/gold].",
+  "MNEMONIST-SLEEVED_JOKER.title": "Sleeved Joker"
+}
