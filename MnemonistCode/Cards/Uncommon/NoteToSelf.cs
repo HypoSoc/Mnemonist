@@ -25,23 +25,19 @@ public class NoteToSelf() : MnemonistCard(2, CardType.Power, CardRarity.Uncommon
             await CardCmd.Exhaust(choiceContext, card, skipVisuals: true);
             PileType.Exhaust.GetPile(Owner).InvokeCardAddFinished();
         }
-
-        if (IsUpgraded)
+        var handStatus = PileType.Hand.GetPile(Owner).Cards.Where(c => c.Type == CardType.Status).ToList();
+        memoryAmount += handStatus.Count;
+        foreach (var card in handStatus)
         {
-            var handStatus = PileType.Hand.GetPile(Owner).Cards.Where(c => c.Type == CardType.Status).ToList();
-            memoryAmount += handStatus.Count;
-            foreach (var card in handStatus)
-            {
-                await CardCmd.Exhaust(choiceContext, card);
-            }
-            
-            var discardStatus = PileType.Discard.GetPile(Owner).Cards.Where(c => c.Type == CardType.Status).ToList();
-            memoryAmount += discardStatus.Count;
-            foreach (var card in discardStatus)
-            {
-                await CardCmd.Exhaust(choiceContext, card, skipVisuals: true);
-                PileType.Exhaust.GetPile(Owner).InvokeCardAddFinished();
-            }
+            await CardCmd.Exhaust(choiceContext, card);
+        }
+        
+        var discardStatus = PileType.Discard.GetPile(Owner).Cards.Where(c => c.Type == CardType.Status).ToList();
+        memoryAmount += discardStatus.Count;
+        foreach (var card in discardStatus)
+        {
+            await CardCmd.Exhaust(choiceContext, card, skipVisuals: true);
+            PileType.Exhaust.GetPile(Owner).InvokeCardAddFinished();
         }
 
         memoryAmount /= 2;
