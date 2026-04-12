@@ -27,7 +27,7 @@ public class BreadthOfExperience() : MnemonistCard(2, CardType.Attack, CardRarit
                 if (PileType.Draw.GetPile(Owner).Cards.Count < DynamicVars["Size"].IntValue)
                 {
                     _isDiscounted = false;
-                    EnergyCost.AddThisCombat(1);
+                    EnergyCost.AddThisCombat(2);
                 }
             }
             else
@@ -35,7 +35,7 @@ public class BreadthOfExperience() : MnemonistCard(2, CardType.Attack, CardRarit
                 if (PileType.Draw.GetPile(Owner).Cards.Count >= DynamicVars["Size"].IntValue)
                 {
                     _isDiscounted = true;
-                    EnergyCost.AddThisCombat(-1, reduceOnly: true);
+                    EnergyCost.AddThisCombat(-2, reduceOnly: true);
                 }
             }
         }

@@ -8,7 +8,7 @@ namespace Mnemonist.MnemonistCode.Cards.Uncommon;
 
 public class AngerPoint() : MnemonistCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10m, ValueProp.Move), new IntVar("Size", 25)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10m, ValueProp.Move), new IntVar("Size", 20)];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
