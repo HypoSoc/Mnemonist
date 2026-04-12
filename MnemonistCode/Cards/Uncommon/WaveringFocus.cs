@@ -10,7 +10,7 @@ namespace Mnemonist.MnemonistCode.Cards.Uncommon;
 public class WaveringFocus() : MnemonistCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new CalculationBaseVar(25M),
+        new CalculationBaseVar(30M),
         new CalculationExtraVar(-1M),
         new CalculatedBlockVar(ValueProp.Move).WithMultiplier( (card, _) => (card.CombatState != null ? PileType.Draw.GetPile(card.Owner).Cards.Count + PileType.Discard.GetPile(card.Owner).Cards.Count : 0))];
 
@@ -28,6 +28,6 @@ public class WaveringFocus() : MnemonistCard(1, CardType.Skill, CardRarity.Uncom
 
     protected override void OnUpgrade()
     {
-        DynamicVars.CalculationBase.UpgradeValueBy(5m);
+        DynamicVars.CalculationBase.UpgradeValueBy(10m);
     }
 }
