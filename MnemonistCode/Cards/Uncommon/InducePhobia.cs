@@ -10,7 +10,7 @@ namespace Mnemonist.MnemonistCode.Cards.Uncommon;
 
 public class InducePhobia() : MnemonistCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new IntVar("Memory", 3m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new IntVar("Memory", 2m)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<StrengthPower>(), HoverTipFactory.FromPower<Memory>()];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
