@@ -17,7 +17,7 @@ public class FondMemories() : MnemonistCard(1, CardType.Skill, CardRarity.Rare, 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         CardSelectorPrefs prefs = new CardSelectorPrefs(SelectionScreenPrompt, 1);
-        CardModel? card = (await CardSelectCmd.FromHand(choiceContext, Owner, prefs,  c => c.DeckVersion is not null, this)).FirstOrDefault<CardModel>();
+        CardModel? card = (await CardSelectCmd.FromHand(choiceContext, Owner, prefs,  c => c.DeckVersion is not null && !c.Keywords.Contains(CardKeyword.Eternal), this)).FirstOrDefault<CardModel>();
         if (card?.DeckVersion == null)
             return;
         await CardCmd.Exhaust(choiceContext, card);
