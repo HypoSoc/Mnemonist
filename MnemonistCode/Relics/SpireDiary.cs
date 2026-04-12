@@ -34,7 +34,7 @@ public class SpireDiary() : MnemonistRelic
         }
     }
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<Memory>(5), new IntVar("Increase", 5)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new IntVar("Memory", 5), new IntVar("Increase", 5)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<Memory>()];
 
     [SavedProperty]
@@ -50,18 +50,23 @@ public class SpireDiary() : MnemonistRelic
     
     private void BuffFromRest()
     {
-        this.IncreasedMemory += DynamicVars["Increase"].IntValue;
+        this.IncreasedMemory += 5;
         this.UpdateMemory();
         InvokeDisplayAmountChanged();
     }
     
-    private void UpdateMemory() => this.CurrentMemory = DynamicVars["Increase"].IntValue + this.IncreasedMemory;
+    private void UpdateMemory() => this.CurrentMemory = 5 + this.IncreasedMemory;
 
     public override bool ShowCounter => true;
     public override int DisplayAmount => DynamicVars["Memory"].IntValue;
 
     public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
     {
+        if (this.CurrentMemory == 0)
+        {
+            this.CurrentMemory = 5; // Why is this necessary?
+            InvokeDisplayAmountChanged();
+        }
         if (side != Owner.Creature.Side || combatState.RoundNumber != 2)
             return;
         await PowerCmd.Apply<Memory>(Owner.Creature, DynamicVars["Memory"].IntValue, Owner.Creature, null);
