@@ -6,6 +6,8 @@ using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Saves;
+using MegaCrit.Sts2.Core.Settings;
 using Mnemonist.MnemonistCode.Cards.Special;
 using Mnemonist.MnemonistCode.Character;
 
@@ -33,18 +35,37 @@ public class CranialTrauma() : MnemonistRelic
 
     public async Task UseExhaust(PlayerChoiceContext choiceContext)
     {
+        var originalMode = SaveManager.Instance.PrefsSave.FastMode;
+        var count = 0;
         foreach (var card in PileType.Draw.GetPile(Owner).Cards.ToList())
         {
-            await CardCmd.Exhaust(choiceContext, card);
+            if (count++ == 3)
+                SaveManager.Instance.PrefsSave.FastMode = FastModeType.Instant;
+            await CardCmd.Exhaust(choiceContext, card, skipVisuals: count >= 10);
+            if (count >= 10)
+            {
+                PileType.Exhaust.GetPile(Owner).InvokeCardAddFinished();
+                PileType.Draw.GetPile(Owner).InvokeCardRemoveFinished();
+            }
             if (card.Pile?.Type == PileType.Exhaust)
                 _exhaustedCards.Add(card);
         }
+        SaveManager.Instance.PrefsSave.FastMode = originalMode;
+        count = 0;
         foreach (var card in PileType.Discard.GetPile(Owner).Cards.ToList())
         {
-            await CardCmd.Exhaust(choiceContext, card);
+            if (count++ == 3)
+                SaveManager.Instance.PrefsSave.FastMode = FastModeType.Instant;
+            await CardCmd.Exhaust(choiceContext, card, skipVisuals: count >= 10);
+            if (count >= 10)
+            {
+                PileType.Exhaust.GetPile(Owner).InvokeCardAddFinished();
+                PileType.Discard.GetPile(Owner).InvokeCardRemoveFinished();
+            }
             if (card.Pile?.Type == PileType.Exhaust)
                 _exhaustedCards.Add(card);
         }
+        SaveManager.Instance.PrefsSave.FastMode = originalMode;
     }
 
     public async Task UseUnexhaust()

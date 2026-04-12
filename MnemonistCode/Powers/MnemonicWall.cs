@@ -96,6 +96,7 @@ public class MnemonicWall : MnemonistPower
                 if (shouldSkip)
                 {
                     PileType.Exhaust.GetPile(Owner.Player).InvokeCardAddFinished();
+                    PileType.Discard.GetPile(Owner.Player).InvokeCardRemoveFinished();
                 }
             }
         }

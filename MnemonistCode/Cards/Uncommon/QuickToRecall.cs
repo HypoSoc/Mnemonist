@@ -24,6 +24,7 @@ public class QuickToRecall() : MnemonistCard(1, CardType.Skill, CardRarity.Uncom
         {
             await CardCmd.Exhaust(choiceContext, card, skipVisuals: true);
             PileType.Exhaust.GetPile(Owner).InvokeCardAddFinished();
+            PileType.Draw.GetPile(Owner).InvokeCardRemoveFinished();
         }
 
         if (IsUpgraded)
@@ -41,6 +42,7 @@ public class QuickToRecall() : MnemonistCard(1, CardType.Skill, CardRarity.Uncom
             {
                 await CardCmd.Exhaust(choiceContext, card, skipVisuals: true);
                 PileType.Exhaust.GetPile(Owner).InvokeCardAddFinished();
+                PileType.Discard.GetPile(Owner).InvokeCardRemoveFinished();
             }
         }
             
