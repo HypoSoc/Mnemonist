@@ -7,6 +7,12 @@ namespace Mnemonist.MnemonistCode.Cards.Rare;
 
 public class MindPalace() : MnemonistCard(3, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
+    public override HashSet<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Innate,
+        CardKeyword.Retain
+    ];
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PowerCmd.Apply<MindPalacePower>(Owner.Creature, 1, Owner.Creature, this);
