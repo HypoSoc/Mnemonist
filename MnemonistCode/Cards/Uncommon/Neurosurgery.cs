@@ -27,7 +27,7 @@ public class Neurosurgery() : MnemonistCard(0,
     {
         CardSelectorPrefs prefs = new CardSelectorPrefs(SelectionScreenPrompt, 0,DynamicVars["Exhaust"].IntValue);
         var cards = (await CardSelectCmd.FromSimpleGrid(choiceContext, 
-            PileType.Draw.GetPile(Owner).Cards.ToList(), 
+            PileType.Draw.GetPile(Owner).Cards.ToList().Order().ToList(), 
             Owner, prefs)).ToList();
         var cardAmount = 0;
         foreach (CardModel card in cards)
