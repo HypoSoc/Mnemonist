@@ -85,7 +85,7 @@
   "MNEMONIST-GOOD_HUMORS.title": "Good Humors",
   "MNEMONIST-GRUDGE.description": "Deal {Damage:diff()} damage to ALL enemies.\nSpend {Memory:diff()} [blue]Memory[/blue] to repeat twice.",
   "MNEMONIST-GRUDGE.title": "Grudge",
-  "MNEMONIST-HELPFUL_MNEMONICS.description": "Shuffle {Engrams:diff()} [blue]Engrams[/blue] into your [gold]Draw Pile[/gold].\nWhenever you draw an [blue]Engram[/blue], gain {HelpfulMnemonicsPower:diff} [gold]Block[/gold].",
+  "MNEMONIST-HELPFUL_MNEMONICS.description": "Shuffle {Engrams:diff()} [blue]{Engrams:plural:Engram|Engrams}[/blue] into your [gold]Draw Pile[/gold].\nWhenever you draw an [blue]Engram[/blue], gain {HelpfulMnemonicsPower:diff} [gold]Block[/gold].",
   "MNEMONIST-HELPFUL_MNEMONICS.title": "Helpful Mnemonics",
   "MNEMONIST-IMAGINARY_FUEL.description": "{IfUpgraded:show:Gain 5 [blue]Memory[/blue]\n|}At the end of your turn, spend 3 [blue]Memory[/blue] to gain {energyPrefix:energyIcons(1)} next turn.",
   "MNEMONIST-IMAGINARY_FUEL.title": "Imaginary Fuel",

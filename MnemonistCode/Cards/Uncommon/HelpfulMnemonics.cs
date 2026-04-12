@@ -9,7 +9,7 @@ namespace Mnemonist.MnemonistCode.Cards.Uncommon;
 
 public class HelpfulMnemonics() : MnemonistCard(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<HelpfulMnemonicsPower>(1m), new IntVar("Engrams", 2)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<HelpfulMnemonicsPower>(1m), new IntVar("Engrams", 1)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<Engram>()];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
