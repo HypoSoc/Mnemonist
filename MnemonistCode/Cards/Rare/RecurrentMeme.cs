@@ -9,13 +9,9 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Mnemonist.MnemonistCode.Cards.Rare;
 
-public class RecurrentMeme() : MnemonistCard(-1, CardType.Attack, CardRarity.Rare, TargetType.RandomEnemy)
+public class RecurrentMeme() : MnemonistCard(0, CardType.Attack, CardRarity.Rare, TargetType.RandomEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(12m, ValueProp.Move)];
-    public override HashSet<CardKeyword> CanonicalKeywords =>
-    [
-        CardKeyword.Unplayable,
-    ];
 
     protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
