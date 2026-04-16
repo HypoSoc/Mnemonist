@@ -19,6 +19,7 @@ public class MnemonicWall : MnemonistPower
 
     private decimal _cardsToExhaust = 0;
     private PlayerChoiceContext? _choiceContext = null;
+    private bool _didDamage = false;
 
     public override Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target, decimal amount, ValueProp props,
         Creature? dealer, CardModel? cardSource)
@@ -48,6 +49,8 @@ public class MnemonicWall : MnemonistPower
         }
 
         this._cardsToExhaust = cardsInDiscard;
+        if (amount > cardsLeftToExhaust)
+            this._didDamage = true;
         return amount - cardsLeftToExhaust;
     }
     
@@ -56,15 +59,26 @@ public class MnemonicWall : MnemonistPower
         if (Owner.Player is null)
             return;
         if (this._cardsToExhaust == 0)
+        {
+            if (this._didDamage)
+            {
+                if (Owner.Player.Character is Character.Mnemonist character0)
+                    character0.PlayAnimation(Owner, "hit");
+            }
+            this._didDamage = false;
             return;
+        }
         if (this._choiceContext is null)
             return;
         if (CombatManager.Instance.IsOverOrEnding)
         {
             return;
         }
+        if (Owner.Player.Character is Character.Mnemonist character)
+            character.PlayAnimation(Owner, "cast");
         var lockInCardsToExhaust = this._cardsToExhaust;
         var lockedChoiceContext = this._choiceContext;
+        var lockedDidDamage = this._didDamage;
         var discardPile = PileType.Discard.GetPile(Owner.Player);
         var originalMode = SaveManager.Instance.PrefsSave.FastMode;
         if (originalMode != FastModeType.Fast && originalMode != FastModeType.Instant)
@@ -101,7 +115,19 @@ public class MnemonicWall : MnemonistPower
             }
         }
         SaveManager.Instance.PrefsSave.FastMode = originalMode;
+        if (Owner.Player.Character is Character.Mnemonist character2)
+        {
+            if (lockedDidDamage)
+            {
+                character2.PlayAnimation(Owner, "hit");
+            }
+            else
+            {
+                character2.PlayAnimation(Owner, "idle_loop");
+            }
+        }
         this._cardsToExhaust = 0;
         this._choiceContext = null;
+        this._didDamage = false;
     }
 }

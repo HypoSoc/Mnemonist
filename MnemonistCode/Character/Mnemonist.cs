@@ -4,7 +4,9 @@ using Godot;
 using MegaCrit.Sts2.Core.Animation;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Entities.Characters;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
 using Mnemonist.MnemonistCode.Cards.Basic;
 using Mnemonist.MnemonistCode.Relics;
 
@@ -57,8 +59,32 @@ public class Mnemonist : PlaceholderCharacterModel
     public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "map_marker_char_name.png".CharacterUiPath();
     
-    public override CreatureAnimator? SetupCustomAnimationStates(MegaSprite controller)
+    public static void PlayAnimation(Creature? creature, string trigger)
     {
-        return SetupAnimationState(controller, "idle_loop");
+        if (creature == null || string.IsNullOrEmpty(trigger)) return;
+
+        var node = NCombatRoom.Instance?.GetCreatureNode(creature);
+        if (node?.Visuals == null) return;
+
+        var animPlayer = node.Visuals.GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
+        if (animPlayer != null)
+        {
+            string godotTrigger = trigger.ToLowerInvariant();
+            if (animPlayer.HasAnimation(godotTrigger))
+            {
+                var anim = animPlayer.GetAnimation(godotTrigger);
+
+                animPlayer.Play(godotTrigger);
+                if (godotTrigger != "idle_loop" && godotTrigger != "dead" && godotTrigger != "cast")
+                {
+                    animPlayer.Queue("idle_loop");
+                }
+            }
+        }
+    }
+    
+    public override CreatureAnimator? GenerateAnimator(MegaSprite controller)
+    {
+        return null; 
     }
 }
