@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cokb3uemvksva"]
+[gd_scene load_steps=10 format=3 uid="uid://cokb3uemvksva"]
 
+[ext_resource type="Script" uid="uid://bw0l1o6uirslo" path="res://MnemonistCode/Nodes/SNMerchantCharacter.cs" id="1_b7tdn"]
 [ext_resource type="Texture2D" uid="uid://dlhhirvcril8s" path="res://Mnemonist/scenes/combat/creature_visuals/Mnemonist_Sprite.png" id="1_n45bf"]
-[ext_resource type="Script" uid="uid://cnvpkjva4eeq" path="res://MenmonistCode/Nodes/SNMerchantCharacter.cs" id="1_b7tdn"]
 
 [sub_resource type="Animation" id="Animation_lh4xf"]
 length = 0.001
@@ -63,7 +63,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-203.39996, -212.064)]
+"values": [Vector2(-309, -316)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -97,9 +97,9 @@ tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1.035265),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(1.5, 1.5)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -421,16 +421,17 @@ _data = {
 }
 
 [node name="MnemonistMerchant" type="Node2D"]
+script = ExtResource("1_b7tdn")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
-script = ExtResource("1_b7tdn")
 
 [node name="Visuals" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-112, -93)
+position = Vector2(1, 2)
 
 [node name="backrobe" type="Polygon2D" parent="Visuals"]
-position = Vector2(-203.39996, -212.064)
+position = Vector2(-309, -316)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_n45bf")
 polygon = PackedVector2Array(206.39996, 197.39998, 215.19995, 126.999985, 272.39996, 18.099976, 323, 4.8999786, 375.8, 36.799973, 339.5, 207.29997, 228.39996, 208.39998)
 uv = PackedVector2Array(206.39996, 197.39998, 215.19995, 126.999985, 272.39996, 18.099976, 323, 4.8999786, 375.8, 36.799973, 339.5, 207.29997, 228.39996, 208.39998)
