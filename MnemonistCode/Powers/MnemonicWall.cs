@@ -16,15 +16,13 @@ public class MnemonicWall : MnemonistPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
-
-    private decimal _cardsToExhaust = 0;
-    private PlayerChoiceContext? _choiceContext = null;
-    private bool _didDamage = false;
+    protected override object InitInternalData() => new Data();
 
     public override Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target, decimal amount, ValueProp props,
         Creature? dealer, CardModel? cardSource)
     {
-        this._choiceContext = choiceContext;
+        var internalData = GetInternalData<Data>();
+        internalData.ChoiceContext = choiceContext;
         return Task.CompletedTask;
     }
 
@@ -39,18 +37,19 @@ public class MnemonicWall : MnemonistPower
             return amount;
         if (target.Player is null)
             return amount;
-        _cardsToExhaust = 0;
+        var internalData = GetInternalData<Data>();
+        internalData.CardsToExhaust = 0;
         decimal cardsInDiscard = PileType.Discard.GetPile(target.Player).Cards.Count;
-        decimal cardsLeftToExhaust = cardsInDiscard - _cardsToExhaust;
+        decimal cardsLeftToExhaust = cardsInDiscard - internalData.CardsToExhaust;
         if (cardsLeftToExhaust > amount)
         {
-            this._cardsToExhaust += amount;
+            internalData.CardsToExhaust += amount;
             return 0;
         }
 
-        this._cardsToExhaust = cardsInDiscard;
+        internalData.CardsToExhaust = cardsInDiscard;
         if (amount > cardsLeftToExhaust)
-            this._didDamage = true;
+            internalData.DidDamage = true;
         return amount - cardsLeftToExhaust;
     }
     
@@ -58,17 +57,18 @@ public class MnemonicWall : MnemonistPower
     {
         if (Owner.Player is null)
             return;
-        if (this._cardsToExhaust == 0)
+        var internalData = GetInternalData<Data>();
+        if (internalData.CardsToExhaust == 0)
         {
-            if (this._didDamage)
+            if (internalData.DidDamage)
             {
                 if (Owner.Player.Character is Character.Mnemonist character0)
                     character0.PlayAnimation(Owner, "hit");
             }
-            this._didDamage = false;
+            internalData.DidDamage = false;
             return;
         }
-        if (this._choiceContext is null)
+        if (internalData.ChoiceContext is null)
             return;
         if (CombatManager.Instance.IsOverOrEnding)
         {
@@ -76,9 +76,9 @@ public class MnemonicWall : MnemonistPower
         }
         if (Owner.Player.Character is Character.Mnemonist character)
             character.PlayAnimation(Owner, "cast");
-        var lockInCardsToExhaust = this._cardsToExhaust;
-        var lockedChoiceContext = this._choiceContext;
-        var lockedDidDamage = this._didDamage;
+        var lockInCardsToExhaust = internalData.CardsToExhaust;
+        var lockedChoiceContext = internalData.ChoiceContext;
+        var lockedDidDamage = internalData.DidDamage;
         var discardPile = PileType.Discard.GetPile(Owner.Player);
         var originalMode = SaveManager.Instance.PrefsSave.FastMode;
         if (originalMode != FastModeType.Fast && originalMode != FastModeType.Instant)
@@ -117,17 +117,17 @@ public class MnemonicWall : MnemonistPower
         SaveManager.Instance.PrefsSave.FastMode = originalMode;
         if (Owner.Player.Character is Character.Mnemonist character2)
         {
-            if (lockedDidDamage)
-            {
-                character2.PlayAnimation(Owner, "hit");
-            }
-            else
-            {
-                character2.PlayAnimation(Owner, "idle_loop");
-            }
+            character2.PlayAnimation(Owner, lockedDidDamage ? "hit" : "idle_loop");
         }
-        this._cardsToExhaust = 0;
-        this._choiceContext = null;
-        this._didDamage = false;
+        internalData.CardsToExhaust = 0;
+        internalData.ChoiceContext = null;
+        internalData.DidDamage = false;
+    }
+    
+    private class Data
+    {
+        public decimal CardsToExhaust = 0;
+        public PlayerChoiceContext? ChoiceContext = null;
+        public bool DidDamage = false;
     }
 }
