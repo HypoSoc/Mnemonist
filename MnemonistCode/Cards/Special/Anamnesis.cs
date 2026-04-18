@@ -12,7 +12,7 @@ namespace Mnemonist.MnemonistCode.Cards.Special;
 
 [Pool(typeof(TokenCardPool))]
 public class Anamnesis() : CustomCardModel(1,
-    CardType.Skill, CardRarity.Curse,
+    CardType.Skill, CardRarity.Token,
     TargetType.Self)
 {
     //Image size:

@@ -17,7 +17,7 @@ using Mnemonist.MnemonistCode.Powers;
 namespace Mnemonist.MnemonistCode.Cards;
 
 [Pool(typeof(TokenCardPool))]
-public class Engram() : CustomCardModel(-1, CardType.Status, CardRarity.Status, TargetType.None)
+public class Engram() : CustomCardModel(-1, CardType.Status, CardRarity.Token, TargetType.None)
 {
     //Image size:
     //Normal art: 1000x760 (Using 500x380 should also work, it will simply be scaled.)
