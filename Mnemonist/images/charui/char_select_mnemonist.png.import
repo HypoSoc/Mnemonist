@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djqjr2i0lpj5c"
-path="res://.godot/imported/map_marker_char_name.png-5d9abaecaffaa15fa0afb6cc4ab52513.ctex"
+uid="uid://c1s6g21pcirlc"
+path="res://.godot/imported/char_select_mnemonist.png-dc27a32194b8cf804de6ec9533cedd4b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Mnemonist/images/charui/map_marker_char_name.png"
-dest_files=["res://.godot/imported/map_marker_char_name.png-5d9abaecaffaa15fa0afb6cc4ab52513.ctex"]
+source_file="res://Mnemonist/images/charui/char_select_mnemonist.png"
+dest_files=["res://.godot/imported/char_select_mnemonist.png-dc27a32194b8cf804de6ec9533cedd4b.ctex"]
 
 [params]
 

@@ -15,6 +15,7 @@ namespace Mnemonist.MnemonistCode.Character;
 public class Mnemonist : PlaceholderCharacterModel
 {
     public const string CharacterId = "Mnemonist";
+    public override string PlaceholderID => "defect";
 
     public static readonly Color Color = new("ffffff");
     
@@ -50,16 +51,13 @@ public class Mnemonist : PlaceholderCharacterModel
     public override RelicPoolModel RelicPool => ModelDb.RelicPool<MnemonistRelicPool>();
     public override PotionPoolModel PotionPool => ModelDb.PotionPool<MnemonistPotionPool>();
 
-    /*  PlaceholderCharacterModel will utilize placeholder basegame assets for most of your character assets until you
-        override all the other methods that define those assets.
-        These are just some of the simplest assets, given some placeholders to differentiate your character with.
-        You don't have to, but you're suggested to rename these images. */
-    public override string CustomIconTexturePath => "character_icon_char_name.png".CharacterUiPath();
-    public override string CustomCharacterSelectIconPath => "char_select_char_name.png".CharacterUiPath();
-    public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
-    public override string CustomMapMarkerPath => "map_marker_char_name.png".CharacterUiPath();
+    public override string CustomIconPath => "res://Mnemonist/scenes/character_icons/mnemonist_icon.tscn";
+    public override string CustomIconTexturePath => "character_icon_mnemonist.png".CharacterUiPath();
+    public override string CustomCharacterSelectIconPath => "char_select_mnemonist.png".CharacterUiPath();
+    public override string CustomCharacterSelectLockedIconPath => "char_select_mnemonist_locked.png".CharacterUiPath();
+    public override string CustomMapMarkerPath => "map_marker_mnemonist.png".CharacterUiPath();
     
-    public static void PlayAnimation(Creature? creature, string trigger)
+    public void PlayAnimation(Creature? creature, string trigger)
     {
         if (creature == null || string.IsNullOrEmpty(trigger)) return;
 

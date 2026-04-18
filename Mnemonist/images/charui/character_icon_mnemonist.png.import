@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1s6g21pcirlc"
-path="res://.godot/imported/char_select_char_name.png-efad9f0608d7a77ba5c6f9bb5294f1c0.ctex"
+uid="uid://cnr11jf4fd74g"
+path="res://.godot/imported/character_icon_mnemonist.png-33112836d8db5a6acd4e00faa034f478.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Mnemonist/images/charui/char_select_char_name.png"
-dest_files=["res://.godot/imported/char_select_char_name.png-efad9f0608d7a77ba5c6f9bb5294f1c0.ctex"]
+source_file="res://Mnemonist/images/charui/character_icon_mnemonist.png"
+dest_files=["res://.godot/imported/character_icon_mnemonist.png-33112836d8db5a6acd4e00faa034f478.ctex"]
 
 [params]
 
