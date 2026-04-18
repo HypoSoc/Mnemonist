@@ -23,7 +23,8 @@ public class Mnemonist : PlaceholderCharacterModel
     //     new CustomEnergyCounter((i) => "res://Mnemonist/images/charui/mnemonist_energy_icon.png", new Color(0.4f, 0.1f, 0.9f), new Color(0.7f, 0.1f, 0.9f));
     
     public override string CustomVisualPath => "res://Mnemonist/scenes/combat/creature_visuals/mnemonist.tscn";
-
+    public override string CustomMerchantAnimPath => "res://Mnemonist/scenes/merchant/mnemonist.tscn";
+    
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Masculine;
     public override int StartingHp => 10;
