@@ -27,6 +27,11 @@ public class Mnemonist : PlaceholderCharacterModel
     public override string CustomRestSiteAnimPath => "res://Mnemonist/scenes/rest/mnemonist_rest.tscn";
     public override string CustomCharacterSelectBg => "res://Mnemonist/scenes/ui/mnemonist_portrait.tscn";
 
+    public override string CustomArmPointingTexturePath => "res://Mnemonist/images/ui/hands/mnemonist_point.png";
+    public override string CustomArmRockTexturePath => "res://Mnemonist/images/ui/hands/mnemonist_rock.png";
+    public override string CustomArmPaperTexturePath => "res://Mnemonist/images/ui/hands/mnemonist_paper.png";
+    public override string CustomArmScissorsTexturePath => "res://Mnemonist/images/ui/hands/mnemonist_scissors.png";
+    
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Masculine;
     public override int StartingHp => 10;
