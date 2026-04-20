@@ -1,5 +1,5 @@
 {
-  "MNEMONIST-CREATESHUMORS.description": "0 Cost Cards with a positive effect that [gold]Exhaust[/gold].",
+  "MNEMONIST-CREATESHUMORS.description": "0 Cost Cards with a positive effect that [gold]Exhaust[/gold].\nThe four Humors are [gold]Choleric[/gold], [purple]Melancholic[/purple], [blue]Phlegmatic[/blue], and [red]Sanguine[/red].",
   "MNEMONIST-CREATESHUMORS.title": "Humor",
   "MNEMONIST-PERSISTENT.title": "Persistent",
   "MNEMONIST-PERSISTENT.description": "When this card is Exhausted, it is shuffled into your Draw Pile.",

@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using Mnemonist.MnemonistCode.Cards;
 using Mnemonist.MnemonistCode.Character;
 using Mnemonist.MnemonistCode.Powers;
 using Mnemonist.MnemonistCode.Relics;
@@ -18,7 +19,7 @@ public class IdyllicMemories() : MnemonistRelic
         RelicRarity.Starter;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<Memory>(10)];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<Memory>()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<Memory>(), HoverTipFactory.FromCard<Engram>()];
 
     public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
     {
