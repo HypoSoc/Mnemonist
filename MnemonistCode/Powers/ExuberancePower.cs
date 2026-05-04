@@ -19,6 +19,6 @@ public class ExuberancePower : MnemonistPower
     {
         if (cardPlay.Card.Owner.Creature != Owner || cardPlay.Card is not Sanguine)
             return;
-        await PowerCmd.Apply<StrengthPower>(Owner, Amount, Owner, null);
+        await PowerCmd.Apply<StrengthPower>(context,Owner, Amount, Owner, null);
     }
 }

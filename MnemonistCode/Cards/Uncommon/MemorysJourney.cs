@@ -20,7 +20,7 @@ public class MemorysJourney() : MnemonistCard(1, CardType.Skill, CardRarity.Unco
     {
         if (CombatState is null)
             return;
-        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Engram.Create(Owner, DynamicVars["Engrams"].IntValue, CombatState).ToList(), PileType.Draw, true, CardPilePosition.Random), 0.2f);
+        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Engram.Create(Owner, DynamicVars["Engrams"].IntValue, CombatState).ToList(), PileType.Draw, Owner, CardPilePosition.Random), 0.2f);
     }
 
     protected override void OnUpgrade() => AddKeyword(CardKeyword.Innate);

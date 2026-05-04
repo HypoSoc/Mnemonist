@@ -21,7 +21,7 @@ public class Overshare() : MnemonistCard(1, CardType.Skill, CardRarity.Rare, Tar
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         var shackleAmount = 1 + PileType.Draw.GetPile(Owner).Cards.Count / DynamicVars["PerDeck"].IntValue;
-        await PowerCmd.Apply<StrengthPower>(cardPlay.Target, -1*shackleAmount, Owner.Creature, this);
+        await PowerCmd.Apply<StrengthPower>(choiceContext,cardPlay.Target, -1*shackleAmount, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => AddKeyword(CardKeyword.Innate);

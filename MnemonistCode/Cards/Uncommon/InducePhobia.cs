@@ -20,7 +20,7 @@ public class InducePhobia() : MnemonistCard(1, CardType.Skill, CardRarity.Uncomm
         if (memoryAmount is null || memoryAmount.Value < DynamicVars["Memory"].IntValue)
             return;
         var shackleAmount = memoryAmount.Value / DynamicVars["Memory"].IntValue;
-        await PowerCmd.Apply<InducePhobiaPower>(cardPlay.Target, shackleAmount, Owner.Creature, this);
+        await PowerCmd.Apply<InducePhobiaPower>(choiceContext,cardPlay.Target, shackleAmount, Owner.Creature, this);
     }
     
     protected override void OnUpgrade()

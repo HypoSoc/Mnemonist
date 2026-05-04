@@ -18,8 +18,8 @@ public class Exuberance() : MnemonistCard(1, CardType.Power, CardRarity.Rare, Ta
     {
         if (CombatState is null)
             return;
-        await CardPileCmd.AddGeneratedCardsToCombat(Humor.Create<Sanguine>(Owner, DynamicVars["Sanguine"].IntValue, CombatState), PileType.Hand, true);
-        await PowerCmd.Apply<ExuberancePower>(Owner.Creature, DynamicVars["ExuberancePower"].BaseValue, Owner.Creature, this);
+        await CardPileCmd.AddGeneratedCardsToCombat(Humor.Create<Sanguine>(Owner, DynamicVars["Sanguine"].IntValue, CombatState), PileType.Hand, Owner);
+        await PowerCmd.Apply<ExuberancePower>(choiceContext,Owner.Creature, DynamicVars["ExuberancePower"].BaseValue, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => this.DynamicVars["Sanguine"].UpgradeValueBy(1M);

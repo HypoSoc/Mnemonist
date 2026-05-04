@@ -58,7 +58,7 @@ public class WeightOfMemory() : MnemonistCard(1, CardType.Attack, CardRarity.Rar
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         bool shouldTriggerFatal = cardPlay.Target.Powers.All(p => p.ShouldOwnerDeathTriggerFatal());
         AttackCommand attackCommand = await DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this).Targeting(cardPlay.Target).WithHitFx("vfx/vfx_big_slash", tmpSfx: "blunt_attack.mp3").Execute(choiceContext);
-        await PowerCmd.Apply<Memory>(this.Owner.Creature, DynamicVars["Memory"].IntValue, this.Owner.Creature, (CardModel) this, false);
+        await PowerCmd.Apply<Memory>(choiceContext,this.Owner.Creature, DynamicVars["Memory"].IntValue, this.Owner.Creature, (CardModel) this, false);
         if (!shouldTriggerFatal || !attackCommand.Results.Any( (r => r.WasTargetKilled)))
             return;
         int intValue = DynamicVars["Increase"].IntValue;

@@ -20,7 +20,7 @@ public class DeepThought() : MnemonistCard(1, CardType.Attack, CardRarity.Common
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-        await PowerCmd.Apply<Memory>(this.Owner.Creature, DynamicVars["Memory"].IntValue, this.Owner.Creature, (CardModel) this, false);
+        await PowerCmd.Apply<Memory>(choiceContext,this.Owner.Creature, DynamicVars["Memory"].IntValue, this.Owner.Creature, (CardModel) this, false);
     }
 
     protected override void OnUpgrade()

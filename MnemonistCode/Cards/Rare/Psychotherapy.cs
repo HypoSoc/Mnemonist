@@ -16,7 +16,7 @@ public class Psychotherapy() : MnemonistCard(1, CardType.Power, CardRarity.Rare,
     {
         if (CombatState is null)
             return;
-        await PowerCmd.Apply<PsychotherapyPower>(Owner.Creature, DynamicVars["PsychotherapyPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<PsychotherapyPower>(choiceContext,Owner.Creature, DynamicVars["PsychotherapyPower"].BaseValue, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => this.DynamicVars["PsychotherapyPower"].UpgradeValueBy(10M);

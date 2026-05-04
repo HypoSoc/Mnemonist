@@ -21,7 +21,7 @@ public class StriveToRemember() : MnemonistCard(0, CardType.Skill, CardRarity.Un
         await CardPileCmd.Draw(choiceContext, 10 - Owner.PlayerCombatState.Hand.Cards.Count, Owner);
         if (Owner.Creature.HasPower<StrivePower>())
             return;
-        await PowerCmd.Apply<StrivePower>(Owner.Creature, DynamicVars["StrivePower"].IntValue, Owner.Creature, this);
+        await PowerCmd.Apply<StrivePower>(choiceContext,Owner.Creature, DynamicVars["StrivePower"].IntValue, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => DynamicVars["StrivePower"].UpgradeValueBy(1m);

@@ -23,7 +23,7 @@ public class MemorizationPower : MnemonistPower
         if (Owner.Player != player)
             return;
         
-        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Engram.Create(Owner.Player, Amount, CombatState).ToList(), PileType.Draw, true, CardPilePosition.Random), 0.2f);
+        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Engram.Create(Owner.Player, Amount, CombatState).ToList(), PileType.Draw, Owner.Player, CardPilePosition.Random), 0.2f);
         await CardPileCmd.Draw(choiceContext, Amount, Owner.Player);
     }
 }

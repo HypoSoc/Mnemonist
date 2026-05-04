@@ -15,7 +15,7 @@ public class Memory : MnemonistPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<Engram>()];
 
     
-    public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
     {
         if (side != CombatSide.Enemy)
             return;
@@ -25,7 +25,7 @@ public class Memory : MnemonistPower
         PileType pileType = Owner.HasPower<MnemonicFormPower>() ? PileType.Draw : PileType.Discard;
         CardPilePosition pilePosition = Owner.HasPower<MnemonicFormPower>() ? CardPilePosition.Random : CardPilePosition.Bottom;
 
-        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Engram.Create(Owner.Player, Amount, combatState).ToList(), pileType, true, pilePosition), 0.2f);
+        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Engram.Create(Owner.Player, Amount, combatState).ToList(), pileType, Owner.Player, pilePosition), 0.2f);
         await PowerCmd.Remove(this);
     }
 }

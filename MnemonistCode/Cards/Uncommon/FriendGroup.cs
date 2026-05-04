@@ -17,7 +17,7 @@ public class FriendGroup() : MnemonistCard(1, CardType.Power, CardRarity.Uncommo
     {
         if (CombatState is null)
             return;
-        await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, DynamicVars["Humors"].IntValue, CombatState, IsUpgraded), PileType.Hand, true);
-        await PowerCmd.Apply<FriendGroupPower>(Owner.Creature, DynamicVars["FriendGroupPower"].BaseValue, Owner.Creature, this);
+        await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, DynamicVars["Humors"].IntValue, CombatState, IsUpgraded), PileType.Hand, Owner);
+        await PowerCmd.Apply<FriendGroupPower>(choiceContext,Owner.Creature, DynamicVars["FriendGroupPower"].BaseValue, Owner.Creature, this);
     }
 }

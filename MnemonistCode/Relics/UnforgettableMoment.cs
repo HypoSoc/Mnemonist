@@ -28,6 +28,6 @@ public class UnforgettableMoment() : MnemonistRelic
         if (!card.IsPersistent())
             return;
         Flash();
-        await PowerCmd.Apply<Memory>(Owner.Creature, DynamicVars["Memory"].IntValue, Owner.Creature, null);
+        await PowerCmd.Apply<Memory>(choiceContext,Owner.Creature, DynamicVars["Memory"].IntValue, Owner.Creature, null);
     }
 }

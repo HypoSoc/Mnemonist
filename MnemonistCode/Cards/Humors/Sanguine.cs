@@ -14,7 +14,7 @@ public class Sanguine() : Humor(CardType.Skill, TargetType.Self)
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<Memory>(Owner.Creature, DynamicVars["Memory"].IntValue, Owner.Creature, this);
+        await PowerCmd.Apply<Memory>(choiceContext,Owner.Creature, DynamicVars["Memory"].IntValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

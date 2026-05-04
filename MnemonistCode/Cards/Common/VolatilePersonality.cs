@@ -23,7 +23,7 @@ public class VolatilePersonality() : MnemonistCard(0, CardType.Skill, CardRarity
     {
         if (CombatState is null)
             return;
-        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, DynamicVars["Humors"].IntValue, CombatState, IsUpgraded), PileType.Draw, true, CardPilePosition.Random), 0.2f);
+        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, DynamicVars["Humors"].IntValue, CombatState, IsUpgraded), PileType.Draw, Owner, CardPilePosition.Random), 0.2f);
         await CardPileCmd.Draw(choiceContext, 1, Owner);
     }
     

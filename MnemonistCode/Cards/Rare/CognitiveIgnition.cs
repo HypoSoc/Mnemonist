@@ -14,7 +14,7 @@ public class CognitiveIgnition() : MnemonistCard(2, CardType.Power, CardRarity.R
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<CognitiveIgnitionPower>(Owner.Creature, DynamicVars["CognitiveIgnitionPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<CognitiveIgnitionPower>(choiceContext,Owner.Creature, DynamicVars["CognitiveIgnitionPower"].BaseValue, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => DynamicVars["CognitiveIgnitionPower"].UpgradeValueBy(1M);

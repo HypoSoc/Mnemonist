@@ -37,7 +37,7 @@ public class Neurosurgery() : MnemonistCard(0,
         }
         if (cardAmount == 0)
             return;
-        await PowerCmd.Apply<Memory>(Owner.Creature, cardAmount, Owner.Creature, this);
+        await PowerCmd.Apply<Memory>(choiceContext, Owner.Creature, cardAmount, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

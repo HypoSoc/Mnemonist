@@ -22,7 +22,7 @@ public class LongTermStorage() : MnemonistCard(1, CardType.Skill, CardRarity.Unc
             await CardCmd.Exhaust(choiceContext, card);
             memoryAmount += DynamicVars["Memory"].IntValue;
         }
-        await PowerCmd.Apply<Memory>(Owner.Creature, memoryAmount, Owner.Creature, this);
+        await PowerCmd.Apply<Memory>(choiceContext,Owner.Creature, memoryAmount, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

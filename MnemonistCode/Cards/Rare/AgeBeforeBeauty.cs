@@ -15,7 +15,7 @@ public class AgeBeforeBeauty() : MnemonistCard(1, CardType.Power, CardRarity.Rar
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<AgeBeforeBeautyPower>(Owner.Creature, DynamicVars["AgeBeforeBeautyPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<AgeBeforeBeautyPower>(choiceContext, Owner.Creature, DynamicVars["AgeBeforeBeautyPower"].BaseValue, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => DynamicVars["AgeBeforeBeautyPower"].UpgradeValueBy(1M);

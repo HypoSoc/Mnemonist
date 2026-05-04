@@ -12,7 +12,7 @@ public class MoodSwings() : MnemonistCard(1, CardType.Power, CardRarity.Uncommon
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<MoodSwingsPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<MoodSwingsPower>(choiceContext,Owner.Creature, 1, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => AddKeyword(CardKeyword.Innate);

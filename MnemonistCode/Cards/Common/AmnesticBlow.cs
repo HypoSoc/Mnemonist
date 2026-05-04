@@ -20,7 +20,7 @@ public class AmnesticBlow() : MnemonistCard(0, CardType.Attack, CardRarity.Commo
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_starry_impact")
             .Execute(choiceContext);
-        await PowerCmd.Apply<Memory>(this.Owner.Creature, -1*DynamicVars["Memory"].IntValue, this.Owner.Creature, (CardModel) this, false);
+        await PowerCmd.Apply<Memory>(choiceContext,this.Owner.Creature, -1*DynamicVars["Memory"].IntValue, this.Owner.Creature, (CardModel) this, false);
     }
 
     protected override void OnUpgrade()

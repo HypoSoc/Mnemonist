@@ -20,10 +20,10 @@ public class Depression() : MnemonistCard(2, CardType.Attack, CardRarity.Uncommo
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_blunt")
             .Execute(choiceContext);
-        await PowerCmd.Apply<WeakPower>(cardPlay.Target, DynamicVars["WeakPower"].IntValue, Owner.Creature, this);
+        await PowerCmd.Apply<WeakPower>(choiceContext,cardPlay.Target, DynamicVars["WeakPower"].IntValue, Owner.Creature, this);
         if (CombatState is null)
             return;
-        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Humor.Create<Melancholic>(Owner, DynamicVars["Melancholics"].IntValue, CombatState), PileType.Discard, true), 0.2f);
+        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Humor.Create<Melancholic>(Owner, DynamicVars["Melancholics"].IntValue, CombatState), PileType.Discard, Owner), 0.2f);
     }
 
     protected override void OnUpgrade()

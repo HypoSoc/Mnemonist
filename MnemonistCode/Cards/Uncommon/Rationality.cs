@@ -22,7 +22,7 @@ public class Rationality() : MnemonistCard(1, CardType.Skill, CardRarity.Uncommo
         }
         if (CombatState is null)
             return;
-        await CardPileCmd.AddGeneratedCardsToCombat(Humor.Create<Phlegmatic>(Owner, DynamicVars["Phlegmatics"].IntValue, CombatState), PileType.Hand, true);
+        await CardPileCmd.AddGeneratedCardsToCombat(Humor.Create<Phlegmatic>(Owner, DynamicVars["Phlegmatics"].IntValue, CombatState), PileType.Hand, Owner);
     }
 
     protected override void OnUpgrade()

@@ -19,14 +19,14 @@ public class AgeBeforeBeautyPower : MnemonistPower
     public override async Task BeforeHandDraw(
         Player player,
         PlayerChoiceContext choiceContext,
-        CombatState combatState)
+        ICombatState combatState)
     {
         if (player != Owner.Player)
             return;
         if (PileType.Draw.GetPile(player).Cards.Count < 20)
             return;
         Flash();
-        await PowerCmd.Apply<AgeBeforeBeautyStrPower>(Owner, Amount, Owner, null, true);
-        await PowerCmd.Apply<AgeBeforeBeautyDexPower>(Owner, Amount, Owner, null, true);
+        await PowerCmd.Apply<AgeBeforeBeautyStrPower>(choiceContext, Owner, Amount, Owner, null, true);
+        await PowerCmd.Apply<AgeBeforeBeautyDexPower>(choiceContext, Owner, Amount, Owner, null, true);
     }
 }

@@ -23,13 +23,13 @@ public class CranialTrauma() : MnemonistRelic
 
     private readonly List<CardModel> _exhaustedCards = [];
 
-    public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
     {
         if (side != Owner.Creature.Side || combatState.RoundNumber > 1)
             return;
         _exhaustedCards.Clear();
         Flash();
-        await CardPileCmd.AddGeneratedCardToCombat(combatState.CreateCard<Amnesia>(Owner), PileType.Hand, true);
+        await CardPileCmd.AddGeneratedCardToCombat(combatState.CreateCard<Amnesia>(Owner), PileType.Hand, Owner);
     }
     
 

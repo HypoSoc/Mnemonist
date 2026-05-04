@@ -19,6 +19,6 @@ public class FriendGroupPower : MnemonistPower
     {
         if (cardPlay.Card.Owner.Creature != Owner || cardPlay.Card is not Humor)
             return;
-        await PowerCmd.Apply<Memory>(Owner, Amount, Owner, null);
+        await PowerCmd.Apply<Memory>(context,Owner, Amount, Owner, null);
     }
 }

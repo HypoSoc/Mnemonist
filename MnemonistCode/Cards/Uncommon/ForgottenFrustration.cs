@@ -13,7 +13,7 @@ public class ForgottenFrustration() : MnemonistCard(1, CardType.Power, CardRarit
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<ForgottenFrustrationPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<ForgottenFrustrationPower>(choiceContext,Owner.Creature, 1, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);

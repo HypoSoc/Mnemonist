@@ -18,9 +18,9 @@ public class Forgetfulness() : MnemonistCard(0, CardType.Skill, CardRarity.Commo
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<Memory>(this.Owner.Creature, -1*DynamicVars["Memory"].IntValue, this.Owner.Creature, (CardModel) this, false);
-        await PowerCmd.Apply<WeakPower>(cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, DynamicVars.Vulnerable.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<Memory>(choiceContext,this.Owner.Creature, -1*DynamicVars["Memory"].IntValue, this.Owner.Creature, (CardModel) this, false);
+        await PowerCmd.Apply<WeakPower>(choiceContext,cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<VulnerablePower>(choiceContext,cardPlay.Target, DynamicVars.Vulnerable.BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

@@ -2,6 +2,7 @@ using System.Reflection;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Logging;
 using Mnemonist.MnemonistCode.Powers;
 
@@ -19,7 +20,7 @@ public class MnemonistPowerPatch
             return;
         Task.Run(async () =>
         {
-            await PowerCmd.Apply<MnemonicWall>(__instance, 1, __instance, null, true);
+            await PowerCmd.Apply<MnemonicWall>(new ThrowingPlayerChoiceContext(),__instance, 1, __instance, null, true);
         });
     }
 }

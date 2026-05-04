@@ -25,7 +25,7 @@ public class Grudge() : MnemonistCard(1, CardType.Attack, CardRarity.Uncommon, T
             return;
         if (Owner.Creature.GetPower<Memory>()?.Amount < DynamicVars["Memory"].IntValue)
             return;
-        await PowerCmd.Apply<Memory>(this.Owner.Creature, -1*DynamicVars["Memory"].IntValue, this.Owner.Creature, (CardModel) this, false);
+        await PowerCmd.Apply<Memory>(choiceContext,this.Owner.Creature, -1*DynamicVars["Memory"].IntValue, this.Owner.Creature, (CardModel) this, false);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

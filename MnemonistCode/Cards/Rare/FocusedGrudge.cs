@@ -58,8 +58,8 @@ public class FocusedGrudge() : MnemonistCard(0, CardType.Power, CardRarity.Rare,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         CardModel clone = CreateClone();
-        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(clone, PileType.Draw, true, CardPilePosition.Random), 0.5f);
-        await PowerCmd.Apply<FocusedGrudgePower>(Owner.Creature, DynamicVars["FocusedGrudgePower"].IntValue, Owner.Creature, this);
+        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(clone, PileType.Draw, Owner, CardPilePosition.Random), 0.5f);
+        await PowerCmd.Apply<FocusedGrudgePower>(choiceContext,Owner.Creature, DynamicVars["FocusedGrudgePower"].IntValue, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => DynamicVars["FocusedGrudgePower"].UpgradeValueBy(5);

@@ -17,7 +17,7 @@ public class RecursiveMemory() : MnemonistCard(3,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await PowerCmd.Apply<RecursiveMemoryPower>(this.Owner.Creature, 1, this.Owner.Creature, (CardModel) this, false);
+        await PowerCmd.Apply<RecursiveMemoryPower>(choiceContext, this.Owner.Creature, 1, this.Owner.Creature, (CardModel) this, false);
     }
 
     protected override void OnUpgrade() => this.EnergyCost.UpgradeBy(-1);

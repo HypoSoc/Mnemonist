@@ -17,10 +17,10 @@ public class SimpleMnemonicsPower : MnemonistPower
     public override async Task BeforeHandDraw(
         Player player,
         PlayerChoiceContext choiceContext,
-        CombatState combatState)
+        ICombatState combatState)
     {
         if (player != Owner.Player)
             return;
-        await PowerCmd.Apply<Memory>(Owner, Amount, Owner, null, true);
+        await PowerCmd.Apply<Memory>(choiceContext,Owner, Amount, Owner, null, true);
     }
 }

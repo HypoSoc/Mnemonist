@@ -22,7 +22,7 @@ public class FondMemories() : MnemonistCard(1, CardType.Skill, CardRarity.Rare, 
             return;
         await CardCmd.Exhaust(choiceContext, card);
         await CardPileCmd.RemoveFromDeck(card.DeckVersion, false);
-        await PowerCmd.Apply<Memory>(Owner.Creature, DynamicVars["Memory"].IntValue, Owner.Creature, this);
+        await PowerCmd.Apply<Memory>(choiceContext,Owner.Creature, DynamicVars["Memory"].IntValue, Owner.Creature, this);
         CardCmd.ApplyKeyword(this, CardKeyword.Unplayable);
     }
     

@@ -18,11 +18,11 @@ public class AnxiousAttachment() : MnemonistRelic
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromKeyword(MnemonistKeywords.Createshumors), HoverTipFactory.FromKeyword(MnemonistKeywords.Persistent), HoverTipFactory.FromCard<Melancholic>(true)];
     
-    public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
     {
         if (side != Owner.Creature.Side || combatState.RoundNumber > 1)
             return;
         Flash();
-        await CardPileCmd.AddGeneratedCardsToCombat(Humor.Create<Melancholic>(Owner, 1, combatState, true), PileType.Hand, true);
+        await CardPileCmd.AddGeneratedCardsToCombat(Humor.Create<Melancholic>(Owner, 1, combatState, true), PileType.Hand, Owner);
     }
 }

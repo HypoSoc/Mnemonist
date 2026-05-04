@@ -30,7 +30,7 @@ public class ObsessiveThought() : MnemonistCard(1,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-        await PowerCmd.Apply<StrengthPower>(Owner.Creature, DynamicVars["StrengthPower"].IntValue, Owner.Creature, this);
+        await PowerCmd.Apply<StrengthPower>(choiceContext,Owner.Creature, DynamicVars["StrengthPower"].IntValue, Owner.Creature, this);
 
     }
 
@@ -44,7 +44,7 @@ public class ObsessiveThought() : MnemonistCard(1,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-        await PowerCmd.Apply<StrengthPower>(Owner.Creature, DynamicVars["StrengthPower"].IntValue, Owner.Creature, this);
+        await PowerCmd.Apply<StrengthPower>(choiceContext,Owner.Creature, DynamicVars["StrengthPower"].IntValue, Owner.Creature, this);
 
     }
 

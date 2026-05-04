@@ -13,7 +13,7 @@ public class MindlessMastery() : MnemonistCard(3, CardType.Power, CardRarity.Rar
     ];
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<MindlessMasteryPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<MindlessMasteryPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);

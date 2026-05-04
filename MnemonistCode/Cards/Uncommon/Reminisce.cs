@@ -22,6 +22,6 @@ public class Reminisce() : MnemonistCard(1, CardType.Skill, CardRarity.Uncommon,
             return;
         if (IsUpgraded)
             memoryAmount *= 2;
-        await PowerCmd.Apply<Memory>(Owner.Creature, (decimal)memoryAmount, Owner.Creature, this);
+        await PowerCmd.Apply<Memory>(choiceContext,Owner.Creature, (decimal)memoryAmount, Owner.Creature, this);
     }
 }

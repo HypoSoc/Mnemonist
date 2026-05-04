@@ -21,7 +21,7 @@ public class BadHumors() : MnemonistCard(1, CardType.Attack, CardRarity.Common, 
             .Execute(choiceContext);
         if (CombatState is null)
             return;
-        await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, 1, CombatState, IsUpgraded), PileType.Hand, true);
+        await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, 1, CombatState, IsUpgraded), PileType.Hand, Owner);
     }
 
     protected override void OnUpgrade()

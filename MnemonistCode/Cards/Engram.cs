@@ -65,13 +65,13 @@ public class Engram() : CustomCardModel(-1, CardType.Status, CardRarity.Token, T
         }
 
         await CardCmd.Exhaust(choiceContext, this);
-        await PowerCmd.Apply<Memory>(this.Owner.Creature, 1, this.Owner.Creature, (CardModel) this, true);
+        await PowerCmd.Apply<Memory>(choiceContext, this.Owner.Creature, 1, this.Owner.Creature, (CardModel) this, true);
         await CardPileCmd.Draw(choiceContext, 1, this.Owner);
         
         SaveManager.Instance.PrefsSave.FastMode = originalMode;
     }
     
-    public static IEnumerable<Engram> Create(Player owner, int amount, CombatState combatState)
+    public static IEnumerable<Engram> Create(Player owner, int amount, ICombatState combatState)
     {
         List<Engram> engramList = new List<Engram>();
         for (int index = 0; index < amount; ++index)

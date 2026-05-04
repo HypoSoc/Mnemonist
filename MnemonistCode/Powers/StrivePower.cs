@@ -40,10 +40,10 @@ public class StrivePower: MnemonistPower
         if (Amount == 1)
         {
             _preventPlay = true;
-            await PowerCmd.ModifyAmount(this, -2M, null, null, silent:true);
+            await PowerCmd.ModifyAmount(context, this, -2M, null, null, silent:true);
             return;
         }
-        await PowerCmd.ModifyAmount(this, -1M, null, null, silent:true);
+        await PowerCmd.ModifyAmount(context, this, -1M, null, null, silent:true);
     }
 
     

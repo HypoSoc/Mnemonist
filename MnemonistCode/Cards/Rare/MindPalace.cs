@@ -15,7 +15,7 @@ public class MindPalace() : MnemonistCard(3, CardType.Power, CardRarity.Rare, Ta
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<MindPalacePower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<MindPalacePower>(choiceContext,Owner.Creature, 1, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);

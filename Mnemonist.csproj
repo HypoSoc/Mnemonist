@@ -77,8 +77,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.0.6" PrivateAssets="All" />
-        <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="*"/>
+        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.1.0" PrivateAssets="All" />
+<!--        <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="*"/>-->
         <AdditionalFiles Include="Mnemonist/localization/**/*.json"/>
     </ItemGroup>
 
@@ -102,7 +102,6 @@
 
     <ItemGroup>
         <Folder Include="Mnemonist\images\potions\" />
-        <Folder Include="Mnemonist\scenes\combat\creature_visuals\" />
     </ItemGroup>
 
     <Target Name="CheckDependencyPaths">

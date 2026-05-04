@@ -14,7 +14,7 @@ public class Memorization() : MnemonistCard(2, CardType.Power, CardRarity.Uncomm
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<MemorizationPower>(Owner.Creature, DynamicVars["MemorizationPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<MemorizationPower>(choiceContext,Owner.Creature, DynamicVars["MemorizationPower"].BaseValue, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);

@@ -26,7 +26,7 @@ public class NewtonsCradle() : MnemonistRelic
         if (shuffler != Owner || Owner.Creature.CombatState == null)
             return;
         Flash();
-        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, DynamicVars["Humors"].IntValue, Owner.Creature.CombatState), PileType.Draw, true, CardPilePosition.Random), 0.2f);
+        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, DynamicVars["Humors"].IntValue, Owner.Creature.CombatState), PileType.Draw, Owner, CardPilePosition.Random), 0.2f);
         await CardPileCmd.Draw(choiceContext, 1, Owner);
     }
 }

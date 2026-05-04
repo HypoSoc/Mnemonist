@@ -22,8 +22,8 @@ public class ImaginaryFuelPower : MnemonistPower
         {
             if (Owner.GetPowerAmount<Memory>() >= 3)
             {
-                await PowerCmd.Apply<Memory>(Owner, -3, this.Owner, null);
-                await PowerCmd.Apply<EnergyNextTurnPower>(Owner, 1, Owner, null);
+                await PowerCmd.Apply<Memory>(choiceContext,Owner, -3, this.Owner, null);
+                await PowerCmd.Apply<EnergyNextTurnPower>(choiceContext,Owner, 1, Owner, null);
             }
         }
     }

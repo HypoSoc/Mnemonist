@@ -45,7 +45,7 @@ public class AccumulatingMemories() : MnemonistCard(1, CardType.Skill, CardRarit
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<Memory>(this.Owner.Creature, DynamicVars["Memory"].IntValue, this.Owner.Creature, (CardModel) this, false);
+        await PowerCmd.Apply<Memory>(choiceContext,this.Owner.Creature, DynamicVars["Memory"].IntValue, this.Owner.Creature, (CardModel) this, false);
     }
 
     public override Task AfterCardExhausted(

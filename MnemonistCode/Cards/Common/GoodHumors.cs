@@ -22,6 +22,6 @@ public class GoodHumors() : MnemonistCard(1, CardType.Skill, CardRarity.Common, 
         cards.AddRange(Humor.Create<Melancholic>(Owner, DynamicVars["Humors"].IntValue, CombatState, IsUpgraded));
         cards.AddRange(Humor.Create<Phlegmatic>(Owner, DynamicVars["Humors"].IntValue, CombatState, IsUpgraded));
         cards.AddRange(Humor.Create<Sanguine>(Owner, DynamicVars["Humors"].IntValue, CombatState, IsUpgraded));
-        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(cards.UnstableShuffle(Owner.RunState.Rng.CombatCardGeneration), PileType.Discard, true), 0.2f);
+        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(cards.UnstableShuffle(Owner.RunState.Rng.CombatCardGeneration), PileType.Discard, Owner), 0.2f);
     }
 }

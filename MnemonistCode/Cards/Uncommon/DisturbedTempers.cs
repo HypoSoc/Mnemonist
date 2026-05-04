@@ -21,7 +21,7 @@ public class DisturbedTempers() : MnemonistCard(1, CardType.Attack, CardRarity.U
             .Execute(choiceContext);
         if (CombatState is null)
             return;
-        await CardPileCmd.AddGeneratedCardsToCombat(Humor.Create<Choleric>(Owner, 1, CombatState, IsUpgraded), PileType.Hand, true);
+        await CardPileCmd.AddGeneratedCardsToCombat(Humor.Create<Choleric>(Owner, 1, CombatState, IsUpgraded), PileType.Hand, Owner);
     }
 
     protected override void OnUpgrade()

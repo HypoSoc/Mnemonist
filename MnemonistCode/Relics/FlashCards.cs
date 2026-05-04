@@ -73,7 +73,7 @@ public class FlashCards() : MnemonistRelic
         if (CardsDrawnThisTurn != DynamicVars["Draw"].IntValue)
             return;
         Flash();
-        await PowerCmd.Apply<StrengthPower>(Owner.Creature, DynamicVars["StrengthPower"].IntValue, Owner.Creature, null);
-        await PowerCmd.Apply<DexterityPower>(Owner.Creature, DynamicVars["DexterityPower"].IntValue, Owner.Creature, null);
+        await PowerCmd.Apply<StrengthPower>(choiceContext,Owner.Creature, DynamicVars["StrengthPower"].IntValue, Owner.Creature, null);
+        await PowerCmd.Apply<DexterityPower>(choiceContext,Owner.Creature, DynamicVars["DexterityPower"].IntValue, Owner.Creature, null);
     }
 }

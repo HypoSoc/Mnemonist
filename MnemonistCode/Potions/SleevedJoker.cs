@@ -23,9 +23,9 @@ public class SleevedJoker: MnemonistPotion
     protected override async Task OnUse(PlayerChoiceContext ctx, Creature? target)
     {
         if (target?.Player == null || target?.CombatState is null) return;
-        await CardPileCmd.AddGeneratedCardsToCombat(Humor.Create<Choleric>(Owner, 1, target.CombatState, true), PileType.Hand, true);
-        await CardPileCmd.AddGeneratedCardsToCombat(Humor.Create<Melancholic>(Owner, 1, target.CombatState, true), PileType.Hand, true);
-        await CardPileCmd.AddGeneratedCardsToCombat(Humor.Create<Phlegmatic>(Owner, 1, target.CombatState, true), PileType.Hand, true);
-        await CardPileCmd.AddGeneratedCardsToCombat(Humor.Create<Sanguine>(Owner, 1, target.CombatState, true), PileType.Hand, true);
+        await CardPileCmd.AddGeneratedCardsToCombat(Humor.Create<Choleric>(Owner, 1, target.CombatState, true), PileType.Hand, Owner);
+        await CardPileCmd.AddGeneratedCardsToCombat(Humor.Create<Melancholic>(Owner, 1, target.CombatState, true), PileType.Hand, Owner);
+        await CardPileCmd.AddGeneratedCardsToCombat(Humor.Create<Phlegmatic>(Owner, 1, target.CombatState, true), PileType.Hand, Owner);
+        await CardPileCmd.AddGeneratedCardsToCombat(Humor.Create<Sanguine>(Owner, 1, target.CombatState, true), PileType.Hand, Owner);
     }
 }

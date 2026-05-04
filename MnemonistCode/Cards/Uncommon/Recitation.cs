@@ -24,8 +24,8 @@ public class Recitation() : MnemonistCard(0, CardType.Attack, CardRarity.Uncommo
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(xValue).FromCard(this).Targeting(cardPlay.Target).WithHitVfxNode((t => NStabVfx.Create(t, true, VfxColor.Gold))).Execute(choiceContext);
         if (xValue > 0)
         {
-            await PowerCmd.Apply<Memory>(Owner.Creature, DynamicVars["Memory"].IntValue * xValue, Owner.Creature, this);
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Engram.Create(Owner, DynamicVars["Engrams"].IntValue*xValue, CombatState).ToList(), PileType.Draw, true, CardPilePosition.Random), 0.2f);
+            await PowerCmd.Apply<Memory>(choiceContext, Owner.Creature, DynamicVars["Memory"].IntValue * xValue, Owner.Creature, this);
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Engram.Create(Owner, DynamicVars["Engrams"].IntValue*xValue, CombatState).ToList(), PileType.Draw, Owner, CardPilePosition.Random), 0.2f);
         }
     }
 

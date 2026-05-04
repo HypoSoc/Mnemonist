@@ -44,7 +44,7 @@ public class NoteToSelf() : MnemonistCard(2, CardType.Power, CardRarity.Uncommon
 
         memoryAmount /= 2;
         if (memoryAmount > 0)
-            await PowerCmd.Apply<SimpleMnemonicsPower>(Owner.Creature, memoryAmount, Owner.Creature, this);
+            await PowerCmd.Apply<SimpleMnemonicsPower>(choiceContext,Owner.Creature, memoryAmount, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => AddKeyword(CardKeyword.Retain);

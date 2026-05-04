@@ -16,8 +16,8 @@ public class HelpfulMnemonics() : MnemonistCard(1, CardType.Power, CardRarity.Un
     {
         if (CombatState is null)
             return;
-        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Engram.Create(Owner, DynamicVars["Engrams"].IntValue, CombatState).ToList(), PileType.Draw, true, CardPilePosition.Random), 0.2f);
-        await PowerCmd.Apply<HelpfulMnemonicsPower>(Owner.Creature, DynamicVars["HelpfulMnemonicsPower"].BaseValue, Owner.Creature, this);
+        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Engram.Create(Owner, DynamicVars["Engrams"].IntValue, CombatState).ToList(), PileType.Draw, Owner, CardPilePosition.Random), 0.2f);
+        await PowerCmd.Apply<HelpfulMnemonicsPower>(choiceContext,Owner.Creature, DynamicVars["HelpfulMnemonicsPower"].BaseValue, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => DynamicVars["Engrams"].UpgradeValueBy(2M);

@@ -17,8 +17,8 @@ public class Reenactment() : MnemonistCard(0, CardType.Skill, CardRarity.Uncommo
     {
         if (CombatState is null)
             return;
-        await PowerCmd.Apply<Memory>(Owner.Creature, -1*DynamicVars["Memory"].IntValue, Owner.Creature, this, false);
-        await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, DynamicVars["Humors"].IntValue, CombatState), PileType.Hand, true, CardPilePosition.Random);
+        await PowerCmd.Apply<Memory>(choiceContext,Owner.Creature, -1*DynamicVars["Memory"].IntValue, Owner.Creature, this, false);
+        await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, DynamicVars["Humors"].IntValue, CombatState), PileType.Hand, Owner, CardPilePosition.Random);
     }
     
     protected override void OnUpgrade()

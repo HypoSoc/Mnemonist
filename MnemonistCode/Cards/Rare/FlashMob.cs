@@ -20,7 +20,7 @@ public class FlashMob() : MnemonistCard(3, CardType.Attack, CardRarity.Rare, Tar
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-        await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, 10-PileType.Hand.GetPile(Owner).Cards.Count, CombatState), PileType.Hand, true);
+        await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, 10-PileType.Hand.GetPile(Owner).Cards.Count, CombatState), PileType.Hand, Owner);
     }
 
     protected override void OnUpgrade()

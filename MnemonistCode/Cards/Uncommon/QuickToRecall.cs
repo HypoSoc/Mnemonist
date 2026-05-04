@@ -47,6 +47,6 @@ public class QuickToRecall() : MnemonistCard(1, CardType.Skill, CardRarity.Uncom
         }
             
         if (memoryAmount > 0)
-            await PowerCmd.Apply<Memory>(Owner.Creature, memoryAmount, Owner.Creature, this);
+            await PowerCmd.Apply<Memory>(choiceContext,Owner.Creature, memoryAmount, Owner.Creature, this);
     }
 }

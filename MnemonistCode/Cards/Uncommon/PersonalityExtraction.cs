@@ -14,7 +14,7 @@ public class PersonalityExtraction() : MnemonistCard(1, CardType.Power, CardRari
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<PersonalityExtractionPower>(Owner.Creature, DynamicVars["PersonalityExtractionPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<PersonalityExtractionPower>(choiceContext,Owner.Creature, DynamicVars["PersonalityExtractionPower"].BaseValue, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => DynamicVars["PersonalityExtractionPower"].UpgradeValueBy(1M);

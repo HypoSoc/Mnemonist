@@ -34,7 +34,7 @@ public class MissTheJoke() : MnemonistCard(1, CardType.Skill, CardRarity.Uncommo
         if (card != this || CombatState is null)
             return;
         
-        await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, 1, CombatState, IsUpgraded), PileType.Hand, true);
+        await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, 1, CombatState, IsUpgraded), PileType.Hand, Owner);
     }
 
     protected override void OnUpgrade()

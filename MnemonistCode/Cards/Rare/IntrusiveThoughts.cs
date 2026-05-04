@@ -14,7 +14,7 @@ public class IntrusiveThoughts() : MnemonistCard(1, CardType.Power, CardRarity.R
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<IntrusiveThoughtsPower>(Owner.Creature, DynamicVars["IntrusiveThoughtsPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<IntrusiveThoughtsPower>(choiceContext,Owner.Creature, DynamicVars["IntrusiveThoughtsPower"].BaseValue, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => DynamicVars["IntrusiveThoughtsPower"].UpgradeValueBy(3M);

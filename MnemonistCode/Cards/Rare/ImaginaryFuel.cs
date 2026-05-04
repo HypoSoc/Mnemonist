@@ -14,8 +14,8 @@ public class ImaginaryFuel() : MnemonistCard(1, CardType.Power, CardRarity.Rare,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<Memory>(Owner.Creature, DynamicVars["Memory"].BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<ImaginaryFuelPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<Memory>(choiceContext,Owner.Creature, DynamicVars["Memory"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<ImaginaryFuelPower>(choiceContext,Owner.Creature, 1, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => DynamicVars["Memory"].UpgradeValueBy(5M);

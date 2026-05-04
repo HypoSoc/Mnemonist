@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -60,7 +61,7 @@ public class SpireDiary() : MnemonistRelic
     public override bool ShowCounter => true;
     public override int DisplayAmount => DynamicVars["Memory"].IntValue;
 
-    public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
     {
         if (this.CurrentMemory == 0)
         {
@@ -69,7 +70,7 @@ public class SpireDiary() : MnemonistRelic
         }
         if (side != Owner.Creature.Side || combatState.RoundNumber != 2)
             return;
-        await PowerCmd.Apply<Memory>(Owner.Creature, DynamicVars["Memory"].IntValue, Owner.Creature, null);
+        await PowerCmd.Apply<Memory>(new ThrowingPlayerChoiceContext(),Owner.Creature, DynamicVars["Memory"].IntValue, Owner.Creature, null);
     }
     
     public override Task AfterRestSiteHeal(Player player, bool isMimicked)

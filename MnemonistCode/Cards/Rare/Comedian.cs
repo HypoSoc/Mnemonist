@@ -29,8 +29,8 @@ public class Comedian() : MnemonistCard(1, CardType.Skill, CardRarity.Rare, Targ
         }
         if (cardAmount == 0)
             return;
-        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, cardAmount, CombatState, IsUpgraded), PileType.Draw, true, CardPilePosition.Random), 0.2f);
-        await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, cardAmount, CombatState, IsUpgraded), PileType.Hand, true);
-        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, cardAmount, CombatState, IsUpgraded), PileType.Discard, true), 0.2f);
+        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, cardAmount, CombatState, IsUpgraded), PileType.Draw, Owner, CardPilePosition.Random), 0.2f);
+        await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, cardAmount, CombatState, IsUpgraded), PileType.Hand, Owner);
+        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner, cardAmount, CombatState, IsUpgraded), PileType.Discard, Owner), 0.2f);
     }
 }

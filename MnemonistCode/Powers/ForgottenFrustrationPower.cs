@@ -23,6 +23,6 @@ public class ForgottenFrustrationPower : MnemonistPower
         if (card.Type == CardType.Status || Owner.CombatState is null || Owner.CombatState.CurrentSide != Owner.Side)
             return;
         
-        await PowerCmd.Apply<ForgottenFrustrationStrPower>(Owner, Amount, Owner, null);
+        await PowerCmd.Apply<ForgottenFrustrationStrPower>(choiceContext,Owner, Amount, Owner, null);
     }
 }

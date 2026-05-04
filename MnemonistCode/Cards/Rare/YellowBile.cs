@@ -17,7 +17,7 @@ public class YellowBile() : MnemonistCard(1, CardType.Power, CardRarity.Rare, Ta
     {
         if (CombatState is null)
             return;
-        await PowerCmd.Apply<YellowBilePower>(Owner.Creature, DynamicVars["YellowBilePower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<YellowBilePower>(choiceContext,Owner.Creature, DynamicVars["YellowBilePower"].BaseValue, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => DynamicVars["YellowBilePower"].UpgradeValueBy(2M);

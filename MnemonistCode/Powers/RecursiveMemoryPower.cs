@@ -24,6 +24,6 @@ public class RecursiveMemoryPower : MnemonistPower
         if (card is not Engram)
             return;
         Flash();
-        await PowerCmd.Apply<Memory>(this.Owner, this.Amount, this.Owner, null, true);
+        await PowerCmd.Apply<Memory>(choiceContext,this.Owner, this.Amount, this.Owner, null, true);
     }
 }

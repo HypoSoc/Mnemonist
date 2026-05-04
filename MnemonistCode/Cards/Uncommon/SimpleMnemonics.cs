@@ -14,7 +14,7 @@ public class SimpleMnemonics() : MnemonistCard(1, CardType.Power, CardRarity.Unc
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<SimpleMnemonicsPower>(Owner.Creature, DynamicVars["SimpleMnemonicsPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<SimpleMnemonicsPower>(choiceContext,Owner.Creature, DynamicVars["SimpleMnemonicsPower"].BaseValue, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => DynamicVars["SimpleMnemonicsPower"].UpgradeValueBy(1M);

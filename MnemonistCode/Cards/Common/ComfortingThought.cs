@@ -22,7 +22,7 @@ public class ComfortingThought() : MnemonistCard(1, CardType.Skill, CardRarity.C
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.CalculatedBlock.Calculate(cardPlay.Target), DynamicVars.CalculatedBlock.Props, cardPlay);
         if (IsUpgraded)
-            await PowerCmd.Apply<Memory>(Owner.Creature, DynamicVars["Memory"].IntValue, Owner.Creature, (CardModel) this, false);
+            await PowerCmd.Apply<Memory>(choiceContext,Owner.Creature, DynamicVars["Memory"].IntValue, Owner.Creature, (CardModel) this, false);
 
     }
 

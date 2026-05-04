@@ -24,6 +24,6 @@ public class MoodSwingsPower : MnemonistPower
         if (Owner.Player != player)
             return;
         
-        await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner.Player, Amount, CombatState), PileType.Hand, true);
+        await CardPileCmd.AddGeneratedCardsToCombat(Humor.CreateRandom(Owner.Player, Amount, CombatState), PileType.Hand, Owner.Player);
     }
 }

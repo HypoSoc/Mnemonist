@@ -38,7 +38,7 @@ public abstract class Humor(CardType type, TargetType target) : CustomCardModel(
     private static readonly List<Humor> CanonicalHumors =
         [ModelDb.Card<Choleric>(), ModelDb.Card<Melancholic>(), ModelDb.Card<Phlegmatic>(), ModelDb.Card<Sanguine>()];
     
-    public static IEnumerable<CardModel> CreateRandom(Player owner, int amount, CombatState combatState, bool isUpgraded = false)
+    public static IEnumerable<CardModel> CreateRandom(Player owner, int amount, ICombatState combatState, bool isUpgraded = false)
     {
         bool didFlash = false;
         List<CardModel> humorList = new List<CardModel>();
@@ -68,7 +68,7 @@ public abstract class Humor(CardType type, TargetType target) : CustomCardModel(
         return humorList;
     }
     
-    public static IEnumerable<Humor> Create<T>(Player owner, int amount, CombatState combatState, bool isUpgraded = false) where T : Humor
+    public static IEnumerable<Humor> Create<T>(Player owner, int amount, ICombatState combatState, bool isUpgraded = false) where T : Humor
     {
         bool didFlash = false;
         List<Humor> humorList = new List<Humor>();

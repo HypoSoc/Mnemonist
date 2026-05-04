@@ -26,6 +26,6 @@ public class MemoryInABottle: MnemonistPotion
     protected override async Task OnUse(PlayerChoiceContext ctx, Creature? target)
     {
         if (target?.Player == null) return;
-        await PowerCmd.Apply<Memory>(target, DynamicVars["Memory"].IntValue, this.Owner.Creature, null, false);
+        await PowerCmd.Apply<Memory>(ctx, target, DynamicVars["Memory"].IntValue, this.Owner.Creature, null, false);
     }
 }

@@ -13,7 +13,7 @@ public class LockedMemories() : MnemonistCard(0, CardType.Power, CardRarity.Unco
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<LockedMemoriesPower>(Owner.Creature, DynamicVars["LockedMemoriesPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<LockedMemoriesPower>(choiceContext,Owner.Creature, DynamicVars["LockedMemoriesPower"].BaseValue, Owner.Creature, this);
     }
     
     protected override void OnUpgrade() => DynamicVars["LockedMemoriesPower"].UpgradeValueBy(1);
